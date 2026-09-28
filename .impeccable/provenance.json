@@ -1,0 +1,47 @@
+{
+  "generated_at": "2026-09-27",
+  "surface": "guest landing (/) and app shell",
+  "rule": "Every raster file that ships in public/ carries its origin here. Nothing raster ships without a line below.",
+  "assets": [
+    {
+      "path": "public/favicon.svg",
+      "kind": "vector",
+      "origin": "authored in this build",
+      "author": "Luma build (Impeccable, seed 674610b6)",
+      "note": "Luma jar mark: mist field, kraft lid, glass body with dill contents, kraft label band and coral category stripe."
+    },
+    {
+      "path": "public/apple-touch-icon.png",
+      "kind": "raster",
+      "origin": "generated in this build",
+      "author": "Luma build (Impeccable, seed 674610b6)",
+      "generator": "System.Drawing (GDI+) render of the same 64-unit jar construction used by public/favicon.svg",
+      "dimensions": "180x180",
+      "replaces": "Laravel starter default (framework ship mark)"
+    },
+    {
+      "path": "public/favicon.ico",
+      "kind": "raster",
+      "origin": "generated in this build",
+      "author": "Luma build (Impeccable, seed 674610b6)",
+      "generator": "System.Drawing (GDI+) 32x32 PNG of the jar mark, wrapped in an ICO container",
+      "dimensions": "32x32",
+      "replaces": "Laravel starter default (framework ship mark)"
+    },
+    {
+      "path": ".impeccable/quality-bar/brine-board.webp",
+      "kind": "raster",
+      "origin": "reference only",
+      "ships": false,
+      "note": "Quality bar card for the chosen world; never applied to the page."
+    },
+    {
+      "path": ".impeccable/quality-bar/brine-hero.webp",
+      "kind": "raster",
+      "origin": "reference only",
+      "ships": false,
+      "note": "Quality bar card for the chosen world; never applied to the page."
+    }
+  ],
+  "page_materials": "All on-page imagery is authored SVG (icons, vessels, sprig, status marks) or CSS (kraft grain, wood grain, paper grain). The landing page ships no photographic or generated raster."
+}

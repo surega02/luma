@@ -1,0 +1,336 @@
+@import 'tailwindcss';
+
+@import 'tw-animate-css';
+
+@source '../views';
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+
+@custom-variant dark (&:is(.dark *));
+
+/* ---------------------------------------------------------------------------
+   LUMA WORLD — "The Brine Calendar": label craft, shelf rails, staged vessels.
+   Display: Kaushan Script · Stamped caps: Oswald · Body: Bitter (self-hosted)
+--------------------------------------------------------------------------- */
+
+@font-face {
+    font-family: 'Bitter';
+    font-style: normal;
+    font-weight: 400 700;
+    font-display: swap;
+    src: url('/fonts/bitter-latin.woff2') format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+    font-family: 'Bitter';
+    font-style: normal;
+    font-weight: 400 700;
+    font-display: swap;
+    src: url('/fonts/bitter-latin-ext.woff2') format('woff2');
+    unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+    font-family: 'Kaushan Script';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('/fonts/kaushan-latin.woff2') format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+    font-family: 'Kaushan Script';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('/fonts/kaushan-latin-ext.woff2') format('woff2');
+    unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+    font-family: 'Oswald';
+    font-style: normal;
+    font-weight: 400 600;
+    font-display: swap;
+    src: url('/fonts/oswald-latin.woff2') format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+    font-family: 'Oswald';
+    font-style: normal;
+    font-weight: 400 600;
+    font-display: swap;
+    src: url('/fonts/oswald-latin-ext.woff2') format('woff2');
+    unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@theme {
+    --font-sans: 'Bitter', ui-serif, Georgia, 'Times New Roman', serif;
+    --font-display: 'Kaushan Script', 'Segoe Script', cursive;
+    --font-stamp: 'Oswald', 'Arial Narrow', ui-sans-serif, sans-serif;
+
+    --radius-lg: var(--radius);
+    --radius-md: calc(var(--radius) - 2px);
+    --radius-sm: calc(var(--radius) - 4px);
+
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+
+    --color-card: var(--card);
+    --color-card-foreground: var(--card-foreground);
+
+    --color-popover: var(--popover);
+    --color-popover-foreground: var(--popover-foreground);
+
+    --color-primary: var(--primary);
+    --color-primary-foreground: var(--primary-foreground);
+
+    --color-secondary: var(--secondary);
+    --color-secondary-foreground: var(--secondary-foreground);
+
+    --color-muted: var(--muted);
+    --color-muted-foreground: var(--muted-foreground);
+
+    --color-accent: var(--accent);
+    --color-accent-foreground: var(--accent-foreground);
+
+    --color-destructive: var(--destructive);
+    --color-destructive-foreground: var(--destructive-foreground);
+
+    --color-border: var(--border);
+    --color-input: var(--input);
+    --color-ring: var(--ring);
+
+    --color-sidebar: var(--sidebar);
+    --color-sidebar-foreground: var(--sidebar-foreground);
+    --color-sidebar-primary: var(--sidebar-primary);
+    --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+    --color-sidebar-accent: var(--sidebar-accent);
+    --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+    --color-sidebar-border: var(--sidebar-border);
+    --color-sidebar-ring: var(--sidebar-ring);
+
+    /* World inks — named so every surface can reach for the same jar */
+    --color-mist: #f7f5ee;
+    --color-paper: #fcfaf3;
+    --color-ink: #2e2a26;
+    --color-ink-soft: #5f5a50;
+    --color-dill: #5c7f4a;
+    --color-dill-deep: #3f5a33;
+    --color-coral: #f26882;
+    --color-ruby: #b21e4b;
+    --color-kraft: #cdae86;
+    --color-kraft-deep: #b08f63;
+    --color-glass: #dde6e1;
+    --color-rule: #dcd7c9;
+}
+
+:root {
+    --background: #f7f5ee;
+    --foreground: #2e2a26;
+    --card: #fcfaf3;
+    --card-foreground: #2e2a26;
+    --popover: #fcfaf3;
+    --popover-foreground: #2e2a26;
+    --primary: #5c7f4a;
+    --primary-foreground: #fbfaf5;
+    --secondary: #dde6e1;
+    --secondary-foreground: #2e2a26;
+    --muted: #edeae0;
+    --muted-foreground: #5f5a50;
+    --accent: #cdae86;
+    --accent-foreground: #2e2a26;
+    --destructive: #b21e4b;
+    --destructive-foreground: #fbfaf5;
+    --border: #dcd7c9;
+    --input: #cfc8b8;
+    --ring: #3f5a33;
+    --radius: 0.375rem;
+    --sidebar: #f2efe5;
+    --sidebar-foreground: #2e2a26;
+    --sidebar-primary: #3f5a33;
+    --sidebar-primary-foreground: #fbfaf5;
+    --sidebar-accent: #e6e1d3;
+    --sidebar-accent-foreground: #2e2a26;
+    --sidebar-border: #dcd7c9;
+    --sidebar-ring: #3f5a33;
+}
+
+.dark {
+    --background: #211d18;
+    --foreground: #f2ede2;
+    --card: #2a251f;
+    --card-foreground: #f2ede2;
+    --popover: #2a251f;
+    --popover-foreground: #f2ede2;
+    --primary: #86ab6d;
+    --primary-foreground: #14120e;
+    --secondary: #37402f;
+    --secondary-foreground: #e9e4d8;
+    --muted: #35302a;
+    --muted-foreground: #b9b1a2;
+    --accent: #c9a97c;
+    --accent-foreground: #14120e;
+    --destructive: #d76a7f;
+    --border: #3d372f;
+    --input: #4a4339;
+    --ring: #86ab6d;
+    --sidebar: #1b1814;
+    --sidebar-foreground: #f2ede2;
+    --sidebar-primary: #86ab6d;
+    --sidebar-primary-foreground: #14120e;
+    --sidebar-accent: #302b24;
+    --sidebar-accent-foreground: #e9e4d8;
+    --sidebar-border: #3d372f;
+    --sidebar-ring: #86ab6d;
+}
+
+@layer base {
+    * {
+        @apply border-border;
+    }
+
+    html {
+        scroll-behavior: smooth;
+        background-color: var(--background);
+        /* browser surfaces belong to the world */
+        scrollbar-color: var(--color-kraft-deep) var(--color-mist);
+        accent-color: var(--color-dill-deep);
+        caret-color: var(--color-dill-deep);
+    }
+
+    body {
+        @apply bg-background text-foreground;
+        font-synthesis-weight: none;
+        text-rendering: optimizeLegibility;
+    }
+
+    ::selection {
+        background-color: #d9e2cc;
+        color: #2e2a26;
+    }
+
+    :focus-visible {
+        outline: 2px solid var(--color-dill-deep);
+        outline-offset: 2px;
+        border-radius: 2px;
+    }
+
+    ::-webkit-scrollbar {
+        width: 12px;
+        height: 12px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: #f0ede3;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: #cdae86;
+        border: 3px solid #f0ede3;
+        border-radius: 999px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: #b08f63;
+    }
+
+    ::placeholder {
+        color: #6f6a5f;
+        opacity: 1;
+    }
+
+    ::-moz-selection {
+        background-color: #d9e2cc;
+        color: #2e2a26;
+    }
+}
+
+@layer components {
+    /* stamped caps: the world's label voice */
+    .stamp {
+        font-family: var(--font-stamp);
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        line-height: 1.15;
+    }
+
+    .script {
+        font-family: var(--font-display);
+        font-weight: 400;
+        letter-spacing: 0;
+    }
+
+    /* kraft label stock: paper grain, not a gradient */
+    .kraft {
+        background-color: #cdae86;
+        background-image:
+            repeating-linear-gradient(92deg, rgba(120, 88, 48, 0.06) 0 1px, transparent 1px 4px),
+            repeating-linear-gradient(2deg, rgba(255, 255, 255, 0.14) 0 1px, transparent 1px 6px);
+    }
+
+    /* ticket stock: the label's short edges are punched, never a plain rounded rect */
+    .ticket {
+        -webkit-mask-image:
+            radial-gradient(circle at left center, transparent 6px, #000 6.5px),
+            radial-gradient(circle at right center, transparent 6px, #000 6.5px);
+        mask-image:
+            radial-gradient(circle at left center, transparent 6px, #000 6.5px),
+            radial-gradient(circle at right center, transparent 6px, #000 6.5px);
+        -webkit-mask-composite: source-in;
+        mask-composite: intersect;
+    }
+
+    /* shelf timber: grain and a rounded edge, never a flat bar */
+    .wood {
+        background-color: #b08f63;
+        background-image:
+            repeating-linear-gradient(91deg, rgba(255, 255, 255, 0.11) 0 1px, transparent 1px 7px),
+            repeating-linear-gradient(88.5deg, rgba(58, 38, 18, 0.16) 0 1px, transparent 1px 13px),
+            linear-gradient(180deg, rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0.18));
+    }
+
+    /* dotted rule: the board's divider language */
+    .rule-dotted {
+        background-image: repeating-linear-gradient(to right, var(--color-rule) 0 2px, transparent 2px 7px);
+        background-size: 100% 1px;
+        background-position: top;
+        background-repeat: no-repeat;
+    }
+
+    .paper-grain {
+        background-image:
+            repeating-linear-gradient(0deg, rgba(46, 42, 38, 0.022) 0 1px, transparent 1px 3px),
+            repeating-linear-gradient(90deg, rgba(46, 42, 38, 0.016) 0 1px, transparent 1px 4px);
+    }
+
+    /* soft, offset, blurred — depth, never a halo */
+    .lift {
+        box-shadow:
+            0 1px 2px rgba(46, 42, 38, 0.06),
+            0 12px 28px -16px rgba(46, 42, 38, 0.4);
+    }
+
+    .lift-deep {
+        box-shadow:
+            0 2px 4px rgba(46, 42, 38, 0.07),
+            0 26px 48px -22px rgba(46, 42, 38, 0.45);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+    }
+}

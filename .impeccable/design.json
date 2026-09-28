@@ -1,0 +1,140 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-27T00:00:00.000Z",
+  "title": "Design System: Luma",
+  "extensions": {
+    "colorMeta": {
+      "mist": { "role": "neutral", "displayName": "Mist Ground", "canonical": "#F7F5EE", "tonalRamp": ["#2D2A1F", "#4E4936", "#6F684D", "#908764", "#A9A184", "#C0BAA5", "#D9D6C9", "#F5F4F0"] },
+      "paper": { "role": "neutral", "displayName": "Paper Stock", "canonical": "#FCFAF3", "tonalRamp": ["#2D2A1F", "#4E4936", "#6F684D", "#908764", "#A9A184", "#C0BAA5", "#D9D6C9", "#F5F4F0"] },
+      "ink": { "role": "neutral", "displayName": "Print Ink", "canonical": "#2E2A26", "tonalRamp": ["#2A2622", "#49423C", "#685E55", "#877A6E", "#A1968C", "#BAB3AB", "#D6D1CD", "#F4F2F1"] },
+      "ink-soft": { "role": "neutral", "displayName": "Faded Ink", "canonical": "#5F5A50", "tonalRamp": ["#2A2622", "#49423C", "#685E55", "#877A6E", "#A1968C", "#BAB3AB", "#D6D1CD", "#F4F2F1"] },
+      "rule": { "role": "neutral", "displayName": "Rule Hairline", "canonical": "#DCD7C9", "tonalRamp": ["#2D2A1F", "#4E4836", "#6F664D", "#908564", "#A99F84", "#C0B9A5", "#D9D5C9", "#F5F3F0"] },
+      "dill": { "role": "primary", "displayName": "Dill Green", "canonical": "#5C7F4A", "tonalRamp": ["#23301C", "#3D5431", "#567745", "#709B5A", "#8EB27B", "#ACC79E", "#CDDDC5", "#F1F6EF"] },
+      "dill-deep": { "role": "primary", "displayName": "Dill Deep", "canonical": "#3F5A33", "tonalRamp": ["#22311C", "#3B5530", "#547844", "#6D9C59", "#8BB37A", "#AAC89D", "#CCDEC4", "#F1F6EF"] },
+      "coral": { "role": "secondary", "displayName": "Label Coral", "canonical": "#F26882", "tonalRamp": ["#460612", "#7A0B20", "#AE0F2D", "#E1133A", "#EE3E60", "#F3728A", "#F8AAB9", "#FDE8EC"] },
+      "ruby": { "role": "secondary", "displayName": "Archive Ruby", "canonical": "#B21E4B", "tonalRamp": ["#410B1C", "#711330", "#A11B44", "#D12358", "#E14C79", "#E97C9D", "#F2B0C4", "#FBE9EF"] },
+      "kraft": { "role": "tertiary", "displayName": "Kraft Label Stock", "canonical": "#CDAE86", "tonalRamp": ["#362816", "#5E4627", "#866337", "#AD8148", "#C29C6B", "#D2B793", "#E4D4BE", "#F8F3ED"] },
+      "kraft-deep": { "role": "tertiary", "displayName": "Kraft Deep", "canonical": "#B08F63", "tonalRamp": ["#33281A", "#58452D", "#7D633F", "#A38052", "#B99B74", "#CCB699", "#E0D3C2", "#F6F3EE"] },
+      "glass": { "role": "tertiary", "displayName": "Vessel Glass", "canonical": "#DDE6E1", "tonalRamp": ["#202C26", "#384C41", "#506D5D", "#688D78", "#87A695", "#A7BEB1", "#CAD8D0", "#F0F4F2"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Script Display", "purpose": "Hero statement only — once per surface." },
+      "display-close": { "displayName": "Script Closing", "purpose": "Closing band line — the second and last script use." },
+      "headline": { "displayName": "Stamped Headline", "purpose": "Section titles." },
+      "body": { "displayName": "Reading Serif", "purpose": "All running copy, 54–62ch measure." },
+      "label": { "displayName": "Stamped Label", "purpose": "Buttons, chips, statuses, day counts, field names, metadata." }
+    },
+    "shadows": [
+      { "name": "label-lift", "value": "0 10px 24px -14px rgba(46, 42, 38, 0.7)", "purpose": "Kraft anatomy cards and the mobile anatomy panel." },
+      { "name": "band-lift", "value": "0 8px 18px -12px rgba(46, 42, 38, 0.75)", "purpose": "The closed kraft label band on a vessel." },
+      { "name": "card-lift", "value": "0 1px 2px rgba(46,42,38,0.06), 0 12px 28px -16px rgba(46,42,38,0.4)", "purpose": "Record cards and any paper surface resting on mist." },
+      { "name": "rail-drop", "value": "0 14px 26px -14px rgba(46, 42, 38, 0.75)", "purpose": "The shelf rail — the heaviest shadow in the system." }
+    ],
+    "motion": [
+      { "name": "ease-flip", "value": "cubic-bezier(0.22, 1, 0.36, 1)", "purpose": "The authored label flip: 900ms rotateY(180deg)." },
+      { "name": "ease-state", "value": "200ms", "purpose": "Hover, border and colour state changes on controls." }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" },
+      { "name": "xl", "value": "1280px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The only filled control. Dill block, stamped caps, trailing arrow.",
+      "html": "<button class=\"ds-btn-primary\">GET STARTED <svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M4 12h15\"/><path d=\"m13 6 6 6-6 6\"/></svg></button>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; gap: 8px; background: #5C7F4A; color: #FBFAF5; border: none; border-radius: 3px; padding: 12px 24px; font-family: 'Oswald', 'Arial Narrow', sans-serif; font-size: 13px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; line-height: 1.15; cursor: pointer; transition: background-color 200ms ease; } .ds-btn-primary:hover { background: #3F5A33; } .ds-btn-primary:focus-visible { outline: 2px solid #3F5A33; outline-offset: 2px; border-radius: 2px; }"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Outlined companion to the primary; never filled at rest.",
+      "html": "<button class=\"ds-btn-secondary\">LOGIN</button>",
+      "css": ".ds-btn-secondary { display: inline-flex; align-items: center; background: transparent; color: #2E2A26; border: 1px solid rgba(46,42,38,0.35); border-radius: 3px; padding: 12px 24px; font-family: 'Oswald', 'Arial Narrow', sans-serif; font-size: 13px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; line-height: 1.15; cursor: pointer; transition: border-color 200ms ease, background-color 200ms ease; } .ds-btn-secondary:hover { border-color: #2E2A26; background: rgba(46,42,38,0.05); } .ds-btn-secondary:focus-visible { outline: 2px solid #3F5A33; outline-offset: 2px; border-radius: 2px; }"
+    },
+    {
+      "name": "Filter Chip",
+      "kind": "chip",
+      "refersTo": "chip-filter",
+      "description": "Category filter. Unselected is paper and rule; selected flips to ink.",
+      "html": "<button class=\"ds-chip\">MACHINE LEARNING</button> <button class=\"ds-chip ds-chip-on\" aria-pressed=\"true\">WEB</button>",
+      "css": ".ds-chip { background: #FCFAF3; color: #5F5A50; border: 1px solid #DCD7C9; border-radius: 2px; padding: 8px 12px; font-family: 'Oswald', 'Arial Narrow', sans-serif; font-size: 10.5px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; line-height: 1.15; cursor: pointer; transition: border-color 200ms ease, color 200ms ease, background-color 200ms ease; } .ds-chip:hover { border-color: rgba(46,42,40,0.4); color: #2E2A26; } .ds-chip-on, .ds-chip-on:hover { background: #2E2A26; border-color: #2E2A26; color: #F7F5EE; } .ds-chip:focus-visible { outline: 2px solid #3F5A33; outline-offset: 2px; }"
+    },
+    {
+      "name": "Record Card",
+      "kind": "card",
+      "refersTo": "card-record",
+      "description": "One knowledge record in the preview grid: category bars, title, definition, chips, status and date.",
+      "html": "<article class=\"ds-card\"><div class=\"ds-card-bars\"><span style=\"background:#B21E4B\"></span></div><div class=\"ds-card-body\"><h3>OVERFITTING</h3><p>When a model learns the noise in its training data instead of the underlying pattern.</p><div class=\"ds-card-foot\"><span class=\"ds-status\"><svg width=\"11\" height=\"11\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.4\"><circle cx=\"12\" cy=\"12\" r=\"9\"/><path d=\"m8.5 12 2.5 2.5 4.5-5\"/></svg>COMPLETE</span><span class=\"ds-date\">12 Aug 2026</span></div></div></article>",
+      "css": ".ds-card { background: #FCFAF3; border: 1px solid #DCD7C9; border-radius: 3px; padding: 0 0 20px; box-shadow: 0 1px 2px rgba(46,42,38,0.06), 0 12px 28px -16px rgba(46,42,38,0.4); font-family: 'Bitter', Georgia, serif; overflow: hidden; } .ds-card-bars { display: flex; gap: 3px; padding: 20px 20px 0; } .ds-card-bars span { height: 4px; flex: 1; border-radius: 999px; } .ds-card-body { padding: 16px 20px 0; } .ds-card h3 { margin: 0; font-family: 'Oswald', 'Arial Narrow', sans-serif; font-size: 16px; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; color: #2E2A26; } .ds-card p { margin: 10px 0 0; font-size: 14.5px; line-height: 1.55; color: #5F5A50; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; } .ds-card-foot { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 20px; padding-top: 12px; border-top: 1px dotted #DCD7C9; } .ds-status { display: inline-flex; align-items: center; gap: 6px; font-family: 'Oswald', 'Arial Narrow', sans-serif; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: #2E2A26; } .ds-status svg { color: #3F5A33; } .ds-date { font-size: 12px; color: #5F5A50; }"
+    },
+    {
+      "name": "Search Input",
+      "kind": "input",
+      "refersTo": "input-search",
+      "description": "Labeled search field on paper stock with a leading icon and a clear affordance.",
+      "html": "<div class=\"ds-input\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.7\" stroke-linecap=\"round\"><circle cx=\"11\" cy=\"11\" r=\"7\"/><path d=\"m20 20-3.5-3.5\"/></svg><input type=\"search\" placeholder=\"Search titles, definitions, insights\" aria-label=\"Search knowledge\"></div>",
+      "css": ".ds-input { position: relative; display: flex; align-items: center; max-width: 420px; } .ds-input svg { position: absolute; left: 16px; color: #5F5A50; pointer-events: none; } .ds-input input { width: 100%; height: 48px; background: #FCFAF3; border: 1px solid #CFC8B8; border-radius: 3px; padding: 12px 40px 12px 44px; font-family: 'Oswald', 'Arial Narrow', sans-serif; font-size: 13px; font-weight: 500; letter-spacing: 0.06em; color: #2E2A26; box-sizing: border-box; transition: border-color 200ms ease; } .ds-input input::placeholder { color: #6F6A5F; text-transform: none; letter-spacing: normal; opacity: 1; } .ds-input input:focus { border-color: #3F5A33; outline: 2px solid #3F5A33; outline-offset: 2px; }"
+    },
+    {
+      "name": "Navigation Header",
+      "kind": "nav",
+      "refersTo": "navigation",
+      "description": "Sticky guest bar: script wordmark left, underlined Login and solid Get Started right.",
+      "html": "<header class=\"ds-nav\"><a class=\"ds-nav-mark\" href=\"/\">Luma</a><nav><a class=\"ds-nav-link\" href=\"/login\">LOGIN</a><a class=\"ds-btn-primary\" href=\"/register\">GET STARTED</a></nav></header>",
+      "css": ".ds-nav { position: sticky; top: 0; z-index: 40; display: flex; align-items: center; justify-content: space-between; height: 72px; padding: 0 32px; background: #F7F5EE; border-bottom: 1px solid #DCD7C9; } .ds-nav-mark { font-family: 'Kaushan Script', 'Segoe Script', cursive; font-size: 30px; line-height: 1; color: #2E2A26; text-decoration: none; } .ds-nav nav { display: flex; align-items: center; gap: 20px; } .ds-nav-link { font-family: 'Oswald', 'Arial Narrow', sans-serif; font-size: 13px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #2E2A26; text-decoration: underline; text-decoration-color: #B08F63; text-decoration-thickness: 2px; text-underline-offset: 6px; transition: text-decoration-color 200ms ease; } .ds-nav-link:hover { text-decoration-color: #3F5A33; }"
+    },
+    {
+      "name": "Kraft Label (signature)",
+      "kind": "custom",
+      "refersTo": "signature-component",
+      "description": "A record's own words printed on punched kraft stock. Notches are CSS-masked, so the drop shadow lives on an unmasked wrapper.",
+      "html": "<div class=\"ds-kraft-wrap\"><div class=\"ds-kraft\"><span class=\"ds-kraft-stripe\" style=\"background:#F26882\"></span><p class=\"ds-kraft-title\">OVERFITTING</p><p class=\"ds-kraft-meta\">DAY 35</p><p class=\"ds-kraft-status\"><svg width=\"10\" height=\"10\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.6\"><circle cx=\"12\" cy=\"12\" r=\"9\"/><path d=\"m8.5 12 2.5 2.5 4.5-5\"/></svg>COMPLETE</p></div></div>",
+      "css": ".ds-kraft-wrap { max-width: 200px; box-shadow: 0 8px 18px -12px rgba(46, 42, 38, 0.75); border-radius: 3px; } .ds-kraft { background-color: #CDAE86; background-image: repeating-linear-gradient(92deg, rgba(120,88,48,0.06) 0 1px, transparent 1px 4px), repeating-linear-gradient(2deg, rgba(255,255,255,0.14) 0 1px, transparent 1px 6px); border-radius: 3px; padding: 8px 10px; color: #2E2A26; -webkit-mask-image: radial-gradient(circle at left center, transparent 6px, #000 6.5px), radial-gradient(circle at right center, transparent 6px, #000 6.5px); mask-image: radial-gradient(circle at left center, transparent 6px, #000 6.5px), radial-gradient(circle at right center, transparent 6px, #000 6.5px); -webkit-mask-composite: source-in; mask-composite: intersect; } .ds-kraft-stripe { display: block; height: 3px; width: 100%; border-radius: 999px; } .ds-kraft-title { margin: 6px 0 0; font-family: 'Oswald', 'Arial Narrow', sans-serif; font-size: 13px; font-weight: 500; letter-spacing: 0.03em; text-transform: uppercase; line-height: 1.15; } .ds-kraft-meta { margin: 6px 0 0; font-family: 'Oswald', 'Arial Narrow', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(46,42,38,0.85); } .ds-kraft-status { display: flex; align-items: center; gap: 4px; margin: 4px 0 0; font-family: 'Oswald', 'Arial Narrow', sans-serif; font-size: 9.5px; font-weight: 500; letter-spacing: 0.13em; text-transform: uppercase; color: rgba(46,42,38,0.85); }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Brine Calendar",
+    "overview": "Luma treats knowledge the way a preserves shelf treats a season: something is captured, sealed under a label, and then visibly matures over days until it is finished. The world is label craft — kraft stock, stamped caps, shelf rails, staged vessels — set on warm paper rather than on screen-white. Everything is drawn at arm's length: nothing glows, nothing floats, nothing is rounded into a pill. The page reads as a well-kept pantry of records.\n\nDensity is deliberately uneven. Large quiet fields of mist ground carry one loud element at a time — a script headline, a shelf of three jars, a single green band — so the eye always has somewhere to rest and somewhere to land. Colour is rationed: the greens and corals and rubies exist only where they encode a real category or a real maturity state, which is why a screen with no data looks almost monochrome and a screen with data looks alive.\n\nMotion follows the same discipline. The system ships one authored moment — a vessel opening its kraft label to reveal Definition, My Understanding and Insight, then advancing its stage — and everything else is a 150–200ms state transition. Confirmed visual rejections: no dark mode in v1, no gradients used as text or as decoration, no glassmorphism, no hard-offset neobrutalist shadows, no glyph icon sets, no system or monospace display faces.",
+    "keyCharacteristics": [
+      "Warm paper ground (#F7F5EE) with a faint printed grain, never white and never dark.",
+      "Kraft label stock (#CDAE86) wherever a record's own words are shown.",
+      "Stamped condensed caps (Oswald) for every label, button and section title; a single script face (Kaushan Script) reserved for the two display lines.",
+      "Rationed colour: green for action and maturity, coral/ruby/kraft only as category inks.",
+      "Soft, wide, downward-cast depth; dotted hairlines for content dividers and solid hairlines only at section boundaries.",
+      "One authored motion moment per surface, reduced-motion guarded."
+    ],
+    "rules": [
+      { "name": "The Mist Ground Rule", "body": "The page is #F7F5EE. White is never the page; #FCFAF3 is only ever a surface raised *on* the page. If a new screen wants to feel empty, it gets more mist, not more white.", "section": "colors" },
+      { "name": "The Rationed Colour Rule", "body": "Dill, coral and ruby mark a real action or a real piece of data — never decoration, never a background wash, never a gradient. A screen with nothing to say should be paper and ink.", "section": "colors" },
+      { "name": "The Kraft Means 'A Record Speaks' Rule", "body": "When the interface shows words a learner wrote (definition, understanding, insight, a record's own label), they sit on kraft stock. Kraft is never used for chrome the product itself owns.", "section": "colors" },
+      { "name": "The Two-Script Rule", "body": "Kaushan Script appears at most twice on a surface — once as the hero statement, once as the closing line. It never labels anything and never runs below 36px.", "section": "typography" },
+      { "name": "The Stamped Caps Rule", "body": "Anything that is a label rather than a sentence is Oswald, uppercase, letterspaced. Buttons, chips, statuses, day counts, section titles. A label set in Bitter is a mistake.", "section": "typography" },
+      { "name": "The Soft Downward Rule", "body": "Every shadow is offset down, blurred wide, and spread negative so it stays under the object. An 8px hard black offset at zero blur is refused in this world.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do set every label, button, status, day count and section title in Oswald uppercase with 0.08–0.2em tracking.",
+      "Do put a record's own words on kraft #CDAE86 with Ink #2E2A26 type — and keep micro-caps at text-ink/85 or darker so they clear 4.5:1.",
+      "Do keep the page ground at #F7F5EE and reserve #FCFAF3 for surfaces raised on it.",
+      "Do use dotted hairlines inside a section and solid hairlines only between sections.",
+      "Do give any masked (ticket-notched) element its shadow on an unmasked wrapper.",
+      "Do carry exactly one authored motion moment per surface and guard it with prefers-reduced-motion.",
+      "Do keep contrast: Dill #5C7F4A is for large text and fills only (4.2:1 on Mist); use Dill Deep #3F5A33 for links and small text (7.0:1)."
+    ],
+    "donts": [
+      "Don't introduce a dark theme in v1 — .dark tokens exist but the class is never applied from a system preference.",
+      "Don't use gradients as text, as decoration, or as a section ground. Gradients exist only inside SVG glass and on the wood/kraft/paper grain textures.",
+      "Don't use coral #F26882 or ruby #B21E4B as text on a light ground.",
+      "Don't add a pill radius anywhere; the world stops at 6px except for dots.",
+      "Don't use hard-offset shadows, neobrutalist outlines, embossing or bevels that imitate a material the page does not render.",
+      "Don't put an eyebrow or kicker line above a heading — the sprig flourish is the ornament.",
+      "Don't ship a raster the page did not author; record it in .impeccable/provenance.json."
+    ]
+  }
+}

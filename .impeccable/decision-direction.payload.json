@@ -1,0 +1,203 @@
+{
+  "title": "Choose the visual world for Luma",
+  "question": "The roll assigned the Scientific Wall Chart. Keep it, take an alternate, or re-roll.",
+  "options": [
+    {
+      "id": "assigned",
+      "label": "The Scientific Wall Chart",
+      "kicker": "THE ROLL",
+      "lineage": "school & laboratory periodic tables, litho-printed wall charts",
+      "thesis": "Every fact you capture becomes a tile on one chart, and the tile's state proves you actually understood it.",
+      "palette": ["#EDEEE8", "#141A17", "#2740C8", "#E4D33B", "#C43D31"],
+      "materials": ["litho chart stock", "die-cut tile", "graphite rule", "brass pin"],
+      "viewport": "The whole first screen is the chart: a ruled grid of knowledge tiles filling the field, a title cartouche top-left holding Learn. Capture. Grow. with a solid ultramarine Get Started block beneath it, and one tile flipping open to reveal Definition / My Understanding / Insight.",
+      "risk": "Reads as a school science poster if the type is timid, and can make personal knowledge feel like a cold taxonomy.",
+      "raised": [
+        { "from": "sliding-planes", "raise": "Rationed color (from Rietveld): every colored pixel marks a real state or a real category. No decorative color anywhere on the chart." },
+        { "from": "elbow-panel", "raise": "Pressable blocks (from the Elbow Panel): every CTA and control is a solid, unambiguous block with a hard active state. No ghost buttons." },
+        { "from": "punched-brocade", "raise": "Traceability (from the Jacquard loom): every tile traces back to the three-part anatomy that produced its state \u2014 the flip reveals Definition, My Understanding, and Insight." }
+      ],
+      "wireframe": {
+        "cols": 12,
+        "rows": 10,
+        "regions": [
+          { "label": "title cartouche: Learn. Capture. Grow.", "x": 0, "y": 0, "w": 5, "h": 2, "accent": true },
+          { "label": "Get Started block", "x": 0, "y": 2, "w": 3, "h": 1, "accent": true },
+          { "label": "Login", "x": 3, "y": 2, "w": 2, "h": 1 },
+          { "label": "chart grid of knowledge tiles", "x": 5, "y": 0, "w": 7, "h": 6 },
+          { "label": "How it works: Capture / Organize / Retrieve / Reflect", "x": 0, "y": 6, "w": 12, "h": 2 },
+          { "label": "key feature tiles", "x": 0, "y": 8, "w": 8, "h": 2 },
+          { "label": "Knowledge card preview", "x": 8, "y": 8, "w": 4, "h": 2 }
+        ]
+      }
+    },
+    {
+      "id": "model-pick",
+      "label": "The Card Catalog",
+      "kicker": "IMPECCABLE\u2019S PICK",
+      "lineage": "oak library card catalog, typed index slips",
+      "thesis": "Capture a slip, file it, pull it later \u2014 the product loop rendered as furniture.",
+      "palette": ["#EFE7D6", "#33271B", "#9C3B26", "#2F5D50"],
+      "materials": ["manila card stock", "brass rod", "oak drawer", "typewriter imprint"],
+      "viewport": "A drawer bank across the left edge, one card pulled fully into view on the right carrying the headline and a Get Started block stamped like a date slug.",
+      "risk": "Also where most runs in this category land: the most familiar metaphor in note-taking, and nostalgia with no system behind it is the failure mode.",
+      "wireframe": {
+        "cols": 12,
+        "rows": 10,
+        "regions": [
+          { "label": "drawer bank + brass labels", "x": 0, "y": 0, "w": 3, "h": 10, "accent": true },
+          { "label": "pulled card: hero copy", "x": 3, "y": 0, "w": 9, "h": 6, "accent": true },
+          { "label": "Get Started stamp", "x": 3, "y": 6, "w": 4, "h": 1 },
+          { "label": "Login", "x": 7, "y": 6, "w": 2, "h": 1 },
+          { "label": "How it works slips", "x": 3, "y": 7, "w": 9, "h": 2 },
+          { "label": "Knowledge card preview", "x": 3, "y": 9, "w": 9, "h": 1 }
+        ]
+      }
+    },
+    {
+      "id": "challenger-brine",
+      "label": "The Brine Calendar",
+      "verdict": "competitive",
+      "lineage": "fermentation crocks & seasonal jar labels",
+      "thesis": "Knowledge matures in the open, dated and staged like a ferment.",
+      "palette": ["#F6F1E4", "#D7603F", "#5B7F3E", "#A8322B", "#8A6A3B"],
+      "materials": ["kraft label", "jar glass", "stamped date caps"],
+      "viewport": "A shelf of staged jars, each a knowledge item whose label band shows its day count and maturity stage.",
+      "case": "Fuses cleanly: maturation stages map exactly onto Captured \u2192 Understood \u2192 Complete. Holds product clarity, loses audience identification \u2014 fermentation is not this audience's world.",
+      "risk": "A food metaphor can trivialize serious study, and the shelf says nothing about retrieval.",
+      "hero": "https://impeccable.style/worlds/cards/food-fermentation-culinary-theater-pickling-brine-calendar-hero.webp",
+      "board": "https://impeccable.style/worlds/cards/food-fermentation-culinary-theater-pickling-brine-calendar.webp",
+      "wireframe": {
+        "cols": 12,
+        "rows": 10,
+        "regions": [
+          { "label": "headline on jar label", "x": 0, "y": 0, "w": 7, "h": 2, "accent": true },
+          { "label": "Get Started", "x": 0, "y": 2, "w": 3, "h": 1, "accent": true },
+          { "label": "stage shelf", "x": 7, "y": 0, "w": 5, "h": 6 },
+          { "label": "how it works band", "x": 0, "y": 6, "w": 12, "h": 2 },
+          { "label": "feature labels", "x": 0, "y": 8, "w": 8, "h": 2 },
+          { "label": "preview", "x": 8, "y": 8, "w": 4, "h": 2 }
+        ]
+      }
+    },
+    {
+      "id": "challenger-jackfield",
+      "label": "The Normalling Schedule",
+      "verdict": "competitive",
+      "lineage": "broadcast jackfield patch schedules",
+      "thesis": "Status drawn as a link line, never as a color: unbroken, cross-ticked, gapped, ringed.",
+      "palette": ["#0B0B0C", "#E8A317", "#8A8A8E"],
+      "materials": ["black glass", "amber silkscreen", "hand-inked gap"],
+      "viewport": "Numbered amber lanes on black glass, each knowledge row tied to its default by a line whose break shows its state, with one row deliberately left broken.",
+      "case": "Fuses cleanly: line state carries status with zero reliance on hue \u2014 the strongest accessibility stance on the table. Holds product clarity, loses audience identification \u2014 machine-room patchbays are foreign to a general learner.",
+      "risk": "Machine-room severity can make a personal learning tool feel like equipment rather than a place to think.",
+      "hero": "https://impeccable.style/worlds/cards/operate-b-normalled-jackfield-hero.webp",
+      "board": "https://impeccable.style/worlds/cards/operate-b-normalled-jackfield.webp",
+      "wireframe": {
+        "cols": 12,
+        "rows": 10,
+        "regions": [
+          { "label": "fixed left legend strip", "x": 0, "y": 0, "w": 3, "h": 10, "accent": true },
+          { "label": "lane grid + link lines", "x": 3, "y": 0, "w": 9, "h": 7 },
+          { "label": "Get Started (amber plate)", "x": 3, "y": 7, "w": 4, "h": 1, "accent": true },
+          { "label": "how it works lanes", "x": 3, "y": 8, "w": 9, "h": 1 },
+          { "label": "preview", "x": 3, "y": 9, "w": 9, "h": 1 }
+        ]
+      }
+    },
+    {
+      "id": "challenger-rietveld",
+      "label": "Sliding Planes",
+      "verdict": "declined",
+      "lineage": "1919\u201324 De Stijl interiors, Rietveld Schr\u00f6der house",
+      "thesis": "Sections are repositionable planes; organizing knowledge is literally moving a wall.",
+      "palette": ["#F2F0EB", "#1A1A1A", "#D9251D", "#F2C500", "#1B4EA8"],
+      "materials": ["painted plane", "black frame line", "primary edge"],
+      "viewport": "White field partitioned by sliding primary planes, the headline set flush to a plane edge.",
+      "case": "Loses both axes: famous inside the design world, not the learner's; reorganization reads clearly but reflection has no place in the grammar.",
+      "kept": "Rationed color \u2014 color only ever marks what actually moves.",
+      "hero": "https://impeccable.style/worlds/cards/design-canon-rietveld-sliding-house-hero.webp",
+      "board": "https://impeccable.style/worlds/cards/design-canon-rietveld-sliding-house.webp",
+      "wireframe": {
+        "cols": 12,
+        "rows": 10,
+        "regions": [
+          { "label": "sliding plane: hero", "x": 0, "y": 0, "w": 7, "h": 5, "accent": true },
+          { "label": "Get Started on plane edge", "x": 0, "y": 5, "w": 3, "h": 1 },
+          { "label": "counter plane", "x": 7, "y": 0, "w": 5, "h": 6 },
+          { "label": "lower bands", "x": 0, "y": 6, "w": 12, "h": 4 }
+        ]
+      }
+    },
+    {
+      "id": "challenger-elbow",
+      "label": "Elbow Panel Console",
+      "verdict": "declined",
+      "lineage": "pill-cornered starship wall panels",
+      "thesis": "Flat pastel banks on black glass, framed by sweeping elbows.",
+      "palette": ["#000000", "#C9B6E8", "#F5B98F", "#F0D060", "#9FB4E8"],
+      "materials": ["flat pastel paint", "black glass", "pill edges"],
+      "viewport": "A black field ruled by thick lilac and peach elbow frames, headline and CTA set flush inside the blocks.",
+      "case": "Loses both axes: nostalgia-niche identification, and a control console carries no learning loop.",
+      "kept": "Every control is an unmistakable pressable block with a hard active state.",
+      "hero": "https://impeccable.style/worlds/cards/pop-culture-shelf-elbow-panel-console-hero.webp",
+      "board": "https://impeccable.style/worlds/cards/pop-culture-shelf-elbow-panel-console.webp",
+      "wireframe": {
+        "cols": 12,
+        "rows": 10,
+        "regions": [
+          { "label": "elbow frame", "x": 0, "y": 0, "w": 12, "h": 6, "accent": true },
+          { "label": "headline block", "x": 1, "y": 1, "w": 6, "h": 3 },
+          { "label": "CTA pill", "x": 1, "y": 4, "w": 3, "h": 1, "accent": true },
+          { "label": "segment banks", "x": 0, "y": 6, "w": 12, "h": 4 }
+        ]
+      }
+    },
+    {
+      "id": "challenger-jacquard",
+      "label": "Punched Brocade",
+      "verdict": "declined",
+      "lineage": "jacquard loom punch cards & woven brocade",
+      "thesis": "Thousands of recorded choices resolving into one visible pattern.",
+      "palette": ["#101A3A", "#C9A227", "#EFE6D2"],
+      "materials": ["midnight silk", "gold weft", "punch-card cream"],
+      "viewport": "Midnight ground with the headline woven in gold small caps over a band of punched instruction rows.",
+      "case": "Loses both axes: loom craft is foreign to this audience, and the traceability it proves is version history \u2014 a secondary mechanism, not the core loop.",
+      "kept": "Every visible outcome traces back to the instruction that produced it.",
+      "hero": "https://impeccable.style/worlds/cards/textiles-weave-drape-fashion-jacquard-punched-brocade-hero.webp",
+      "board": "https://impeccable.style/worlds/cards/textiles-weave-drape-fashion-jacquard-punched-brocade.webp",
+      "wireframe": {
+        "cols": 12,
+        "rows": 10,
+        "regions": [
+          { "label": "woven headline band", "x": 0, "y": 0, "w": 12, "h": 3, "accent": true },
+          { "label": "punch rows", "x": 0, "y": 3, "w": 12, "h": 2 },
+          { "label": "Get Started", "x": 0, "y": 5, "w": 3, "h": 1 },
+          { "label": "motif grid", "x": 0, "y": 6, "w": 12, "h": 4 }
+        ]
+      }
+    }
+  ],
+  "reroll": { "registers": ["safer", "bolder"] },
+  "canon": true,
+  "canonCard": {
+    "label": "The category standard",
+    "thesis": "What a productivity landing page ships: light hero, app screenshot in a browser frame, three feature columns, blue pill CTA \u2014 executed impeccably.",
+    "palette": ["#ffffff", "#111827", "#2563eb"],
+    "materials": ["clean grid", "product screenshot"],
+    "viewport": "Headline, subhead, dual CTA, floating app screenshot below the fold line.",
+    "risk": "Indistinguishable from the competition by design.",
+    "wireframe": {
+      "cols": 12,
+      "rows": 10,
+      "regions": [
+        { "label": "nav", "x": 0, "y": 0, "w": 12, "h": 1 },
+        { "label": "headline + subhead", "x": 2, "y": 2, "w": 8, "h": 2, "accent": true },
+        { "label": "CTA row", "x": 4, "y": 4, "w": 4, "h": 1, "accent": true },
+        { "label": "app screenshot", "x": 2, "y": 6, "w": 8, "h": 4 }
+      ]
+    }
+  },
+  "steer": true,
+  "buildPath": { "value": "code" }
+}
