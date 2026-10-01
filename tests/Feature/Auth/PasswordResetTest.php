@@ -92,4 +92,54 @@ class PasswordResetTest extends TestCase
 
         $response->assertSessionHasErrors('email');
     }
+
+    public function test_reset_password_requires_at_least_eight_characters(): void
+    {
+        Notification::fake();
+
+        $user = User::factory()->create();
+
+        $this->post(route('password.email'), ['email' => $user->email]);
+
+        Notification::assertSentTo($user, ResetPassword::class, function ($notification) use ($user) {
+            $response = $this->post(route('password.update'), [
+                'token' => $notification->token,
+                'email' => $user->email,
+                'password' => 'short7',
+                'password_confirmation' => 'short7',
+            ]);
+
+            $response->assertSessionHasErrors('password');
+
+            return true;
+        });
+    }
+
+    public function test_reset_email_is_delivered_through_the_local_mailer(): void
+    {
+        Notification::fake();
+
+        $user = User::factory()->create();
+
+        $this->post(route('password.email'), ['email' => $user->email]);
+
+        Notification::assertSentTo($user, ResetPassword::class, function ($notification) use ($user) {
+            $this->assertNotEmpty($notification->token);
+            $this->assertStringContainsString(
+                'reset-password',
+                route('password.reset', [
+                    'token' => $notification->token,
+                    'email' => $user->email,
+                ]),
+            );
+
+            return true;
+        });
+
+        $this->assertContains(
+            config('mail.default'),
+            ['log', 'array'],
+            'Local/test mail must not be delivered by a real transport.',
+        );
+    }
 }

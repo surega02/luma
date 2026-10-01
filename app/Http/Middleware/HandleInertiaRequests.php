@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Inertia\Middleware;
 
@@ -41,7 +42,28 @@ class HandleInertiaRequests extends Middleware
             'auth' => [
                 'user' => $request->user(),
             ],
+            // The category selector is used by the global Quick Capture
+            // modal, so every page needs the account's category list.
+            'categories' => $this->categories($request),
             'sidebarOpen' => ! $request->hasCookie('sidebar_state') || $request->cookie('sidebar_state') === 'true',
         ];
+    }
+
+    /**
+     * Categories owned by the current account, ordered for display.
+     *
+     * @return array<int, array{id: int, name: string, color: string, icon: string}>
+     */
+    private function categories(Request $request): array
+    {
+        if ($request->user() === null) {
+            return [];
+        }
+
+        return Category::query()
+            ->ownedBy($request->user()->id)
+            ->orderBy('name')
+            ->get(['id', 'name', 'color', 'icon'])
+            ->toArray();
     }
 }

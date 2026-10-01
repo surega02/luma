@@ -18,7 +18,10 @@
     font-weight: 400 700;
     font-display: swap;
     src: url('/fonts/bitter-latin.woff2') format('woff2');
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    unicode-range:
+        U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+        U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+        U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
 @font-face {
@@ -27,7 +30,10 @@
     font-weight: 400 700;
     font-display: swap;
     src: url('/fonts/bitter-latin-ext.woff2') format('woff2');
-    unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+    unicode-range:
+        U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304,
+        U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020,
+        U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 
 @font-face {
@@ -36,7 +42,10 @@
     font-weight: 400;
     font-display: swap;
     src: url('/fonts/kaushan-latin.woff2') format('woff2');
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    unicode-range:
+        U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+        U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+        U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
 @font-face {
@@ -45,7 +54,10 @@
     font-weight: 400;
     font-display: swap;
     src: url('/fonts/kaushan-latin-ext.woff2') format('woff2');
-    unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+    unicode-range:
+        U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304,
+        U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020,
+        U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 
 @font-face {
@@ -54,7 +66,10 @@
     font-weight: 400 600;
     font-display: swap;
     src: url('/fonts/oswald-latin.woff2') format('woff2');
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    unicode-range:
+        U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+        U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+        U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
 @font-face {
@@ -63,7 +78,10 @@
     font-weight: 400 600;
     font-display: swap;
     src: url('/fonts/oswald-latin-ext.woff2') format('woff2');
-    unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+    unicode-range:
+        U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304,
+        U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020,
+        U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 
 @theme {
@@ -268,8 +286,16 @@
     .kraft {
         background-color: #cdae86;
         background-image:
-            repeating-linear-gradient(92deg, rgba(120, 88, 48, 0.06) 0 1px, transparent 1px 4px),
-            repeating-linear-gradient(2deg, rgba(255, 255, 255, 0.14) 0 1px, transparent 1px 6px);
+            repeating-linear-gradient(
+                92deg,
+                rgba(120, 88, 48, 0.06) 0 1px,
+                transparent 1px 4px
+            ),
+            repeating-linear-gradient(
+                2deg,
+                rgba(255, 255, 255, 0.14) 0 1px,
+                transparent 1px 6px
+            );
     }
 
     /* ticket stock: the label's short edges are punched, never a plain rounded rect */
@@ -288,14 +314,30 @@
     .wood {
         background-color: #b08f63;
         background-image:
-            repeating-linear-gradient(91deg, rgba(255, 255, 255, 0.11) 0 1px, transparent 1px 7px),
-            repeating-linear-gradient(88.5deg, rgba(58, 38, 18, 0.16) 0 1px, transparent 1px 13px),
-            linear-gradient(180deg, rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0.18));
+            repeating-linear-gradient(
+                91deg,
+                rgba(255, 255, 255, 0.11) 0 1px,
+                transparent 1px 7px
+            ),
+            repeating-linear-gradient(
+                88.5deg,
+                rgba(58, 38, 18, 0.16) 0 1px,
+                transparent 1px 13px
+            ),
+            linear-gradient(
+                180deg,
+                rgba(255, 255, 255, 0.2),
+                rgba(0, 0, 0, 0.18)
+            );
     }
 
     /* dotted rule: the board's divider language */
     .rule-dotted {
-        background-image: repeating-linear-gradient(to right, var(--color-rule) 0 2px, transparent 2px 7px);
+        background-image: repeating-linear-gradient(
+            to right,
+            var(--color-rule) 0 2px,
+            transparent 2px 7px
+        );
         background-size: 100% 1px;
         background-position: top;
         background-repeat: no-repeat;
@@ -303,8 +345,16 @@
 
     .paper-grain {
         background-image:
-            repeating-linear-gradient(0deg, rgba(46, 42, 38, 0.022) 0 1px, transparent 1px 3px),
-            repeating-linear-gradient(90deg, rgba(46, 42, 38, 0.016) 0 1px, transparent 1px 4px);
+            repeating-linear-gradient(
+                0deg,
+                rgba(46, 42, 38, 0.022) 0 1px,
+                transparent 1px 3px
+            ),
+            repeating-linear-gradient(
+                90deg,
+                rgba(46, 42, 38, 0.016) 0 1px,
+                transparent 1px 4px
+            );
     }
 
     /* soft, offset, blurred — depth, never a halo */
@@ -318,6 +368,98 @@
         box-shadow:
             0 2px 4px rgba(46, 42, 38, 0.07),
             0 26px 48px -22px rgba(46, 42, 38, 0.45);
+    }
+
+    /* stored rich text: serif voice, never the browser's default list */
+    .rt-prose {
+        font-family: var(--font-sans);
+        font-size: 16px;
+        line-height: 1.62;
+    }
+
+    .rt-prose p + p {
+        margin-top: 0.7em;
+    }
+
+    .rt-prose ul,
+    .rt-prose ol {
+        margin: 0.6em 0;
+        padding-left: 1.3em;
+    }
+
+    .rt-prose ul {
+        list-style: disc;
+    }
+
+    .rt-prose ol {
+        list-style: decimal;
+    }
+
+    .rt-prose li + li {
+        margin-top: 0.3em;
+    }
+
+    .rt-prose a {
+        color: var(--color-dill-deep);
+        text-decoration: underline;
+        text-decoration-thickness: from-font;
+        text-underline-offset: 2px;
+    }
+
+    .rt-prose a:hover {
+        color: var(--color-ruby);
+    }
+
+    .rt-prose strong {
+        font-weight: 600;
+    }
+
+    /* the editing surface shares the prose voice so nothing jumps on save */
+    .rt-editor__content {
+        min-height: 6.5rem;
+        padding: 0.65rem 0.75rem;
+        font-family: var(--font-sans);
+        font-size: 16px;
+        line-height: 1.62;
+        color: var(--color-ink);
+        outline: none;
+        overflow-wrap: anywhere;
+    }
+
+    .rt-editor__content p.is-editor-empty:first-child::before {
+        content: attr(data-placeholder);
+        color: var(--color-ink-soft);
+        float: left;
+        height: 0;
+        pointer-events: none;
+    }
+
+    .rt-editor__content p {
+        min-height: 1.7em;
+    }
+
+    .rt-editor__content ul,
+    .rt-editor__content ol {
+        margin: 0.5em 0;
+        padding-left: 1.3em;
+    }
+
+    .rt-editor__content ul {
+        list-style: disc;
+    }
+
+    .rt-editor__content ol {
+        list-style: decimal;
+    }
+
+    .rt-editor__content li + li {
+        margin-top: 0.3em;
+    }
+
+    .rt-editor__content a {
+        color: var(--color-dill-deep);
+        text-decoration: underline;
+        text-underline-offset: 2px;
     }
 }
 

@@ -34,21 +34,21 @@ Dokumen ini **tidak** mendefinisikan visual UI secara detail karena tahap UI/UX 
 
 ## 2.1 Recommended Stack
 
-| Layer | Technology |
-|---|---|
-| Backend | Laravel 13 |
-| Runtime | PHP 8.3+ |
-| Frontend | React 19 |
-| SPA bridge | Inertia 3 |
-| Language | TypeScript / TSX |
-| Styling | Tailwind CSS 4 |
+| Layer         | Technology                                  |
+| ------------- | ------------------------------------------- |
+| Backend       | Laravel 13                                  |
+| Runtime       | PHP 8.3+                                    |
+| Frontend      | React 19                                    |
+| SPA bridge    | Inertia 3                                   |
+| Language      | TypeScript / TSX                            |
+| Styling       | Tailwind CSS 4                              |
 | UI components | shadcn/ui atau custom accessible components |
-| Rich text | Tiptap |
-| Database | MySQL |
-| Auth | Laravel official React starter kit |
-| Asset bundler | Vite |
-| Tests | Pest 4 + PHPUnit |
-| Browser tests | Pest browser testing |
+| Rich text     | Tiptap                                      |
+| Database      | MySQL                                       |
+| Auth          | Laravel official React starter kit          |
+| Asset bundler | Vite                                        |
+| Tests         | Pest 4 + PHPUnit                            |
+| Browser tests | Pest browser testing                        |
 
 Laravel 13 requires PHP 8.3+, and the current official Laravel React starter kit uses React 19, TypeScript, Inertia 3, and Tailwind 4. The official starter kits supersede the older Breeze package approach for new applications.
 
@@ -1176,8 +1176,7 @@ However, when rendering a URL:
 For external links:
 
 ```html
-target="_blank"
-rel="noopener noreferrer"
+target="_blank" rel="noopener noreferrer"
 ```
 
 This preserves the product decision without opening a protocol-based XSS path.
@@ -1533,10 +1532,7 @@ Define domain types centrally.
 Example:
 
 ```ts
-export type KnowledgeStatus =
-    | 'captured'
-    | 'understood'
-    | 'complete';
+export type KnowledgeStatus = 'captured' | 'understood' | 'complete';
 
 export interface Knowledge {
     id: number;

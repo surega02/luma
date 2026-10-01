@@ -29,7 +29,7 @@ class ProfileUpdateTest extends TestCase
             ->actingAs($user)
             ->patch(route('profile.update'), [
                 'name' => 'Test User',
-                'email' => 'test@example.com',
+                'username' => 'updated-username',
             ]);
 
         $response
@@ -39,26 +39,45 @@ class ProfileUpdateTest extends TestCase
         $user->refresh();
 
         $this->assertSame('Test User', $user->name);
-        $this->assertSame('test@example.com', $user->email);
-        $this->assertNull($user->email_verified_at);
+        $this->assertSame('updated-username', $user->username);
     }
 
-    public function test_email_verification_status_is_unchanged_when_the_email_address_is_unchanged()
+    public function test_email_cannot_be_changed_from_profile()
     {
         $user = User::factory()->create();
+        $originalEmail = $user->email;
 
         $response = $this
             ->actingAs($user)
             ->patch(route('profile.update'), [
                 'name' => 'Test User',
-                'email' => $user->email,
+                'username' => $user->username,
+                'email' => 'changed@example.com',
             ]);
 
         $response
             ->assertSessionHasNoErrors()
             ->assertRedirect(route('profile.edit'));
 
-        $this->assertNotNull($user->refresh()->email_verified_at);
+        $this->assertSame($originalEmail, $user->refresh()->email);
+        $this->assertNotNull($user->email_verified_at);
+    }
+
+    public function test_duplicate_username_is_rejected()
+    {
+        User::factory()->create(['username' => 'taken-username']);
+        $user = User::factory()->create();
+
+        $response = $this
+            ->actingAs($user)
+            ->patch(route('profile.update'), [
+                'name' => $user->name,
+                'username' => 'taken-username',
+            ]);
+
+        $response->assertSessionHasErrors('username');
+
+        $this->assertSame($user->username, $user->refresh()->username);
     }
 
     public function test_user_can_delete_their_account()

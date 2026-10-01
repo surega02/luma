@@ -14,24 +14,52 @@ export type VesselItem = {
     insight?: string;
 };
 
-const stageIndex: Record<Stage, number> = { captured: 0, understood: 1, complete: 2 };
-const stageLabel: Record<Stage, string> = { captured: 'Captured', understood: 'Understood', complete: 'Complete' };
+const stageIndex: Record<Stage, number> = {
+    captured: 0,
+    understood: 1,
+    complete: 2,
+};
+const stageLabel: Record<Stage, string> = {
+    captured: 'Captured',
+    understood: 'Understood',
+    complete: 'Complete',
+};
 
-export function Jar({ fill, ink, className = '' }: { fill: number; ink: string; className?: string }) {
+export function Jar({
+    fill,
+    ink,
+    className = '',
+}: {
+    fill: number;
+    ink: string;
+    className?: string;
+}) {
     const bodyTop = 38;
     const bodyHeight = 188;
-    const level = bodyTop + bodyHeight * (1 - Math.max(0.12, Math.min(1, fill)));
+    const level =
+        bodyTop + bodyHeight * (1 - Math.max(0.12, Math.min(1, fill)));
 
     return (
-        <svg viewBox="0 0 160 232" className={className} aria-hidden="true" focusable="false">
+        <svg
+            viewBox="0 0 160 232"
+            className={className}
+            aria-hidden="true"
+            focusable="false"
+        >
             <defs>
-                <clipPath id={`jarBody-${Math.round(fill * 100)}-${ink.slice(1)}`}>
+                <clipPath
+                    id={`jarBody-${Math.round(fill * 100)}-${ink.slice(1)}`}
+                >
                     <rect x="30" y="38" width="100" height="188" rx="18" />
                 </clipPath>
                 <linearGradient id="jarEdge" x1="0" y1="0" x2="1" y2="0">
                     <stop offset="0" stopColor="#2e2a26" stopOpacity="0.17" />
                     <stop offset="0.13" stopColor="#2e2a26" stopOpacity="0" />
-                    <stop offset="0.46" stopColor="#ffffff" stopOpacity="0.12" />
+                    <stop
+                        offset="0.46"
+                        stopColor="#ffffff"
+                        stopOpacity="0.12"
+                    />
                     <stop offset="0.87" stopColor="#2e2a26" stopOpacity="0" />
                     <stop offset="1" stopColor="#2e2a26" stopOpacity="0.19" />
                 </linearGradient>
@@ -44,30 +72,106 @@ export function Jar({ fill, ink, className = '' }: { fill: number; ink: string; 
             {/* lid */}
             <rect x="45" y="5" width="70" height="17" rx="5" fill="#bdb6a6" />
             <rect x="45" y="5" width="70" height="6" rx="3" fill="#d3ccbc" />
-            <rect x="45" y="16" width="70" height="6" rx="3" fill="#a49b8a" opacity="0.55" />
+            <rect
+                x="45"
+                y="16"
+                width="70"
+                height="6"
+                rx="3"
+                fill="#a49b8a"
+                opacity="0.55"
+            />
             {/* clamp wire */}
-            <path d="M38 23h84" stroke="#a79e8c" strokeWidth="4.5" strokeLinecap="round" />
+            <path
+                d="M38 23h84"
+                stroke="#a79e8c"
+                strokeWidth="4.5"
+                strokeLinecap="round"
+            />
             {/* neck */}
-            <rect x="54" y="25" width="52" height="16" fill="#dfe9e5" stroke="#b4c2bc" strokeWidth="2" />
+            <rect
+                x="54"
+                y="25"
+                width="52"
+                height="16"
+                fill="#dfe9e5"
+                stroke="#b4c2bc"
+                strokeWidth="2"
+            />
 
             {/* glass body */}
-            <rect x="30" y="38" width="100" height="188" rx="18" fill="#e6efeb" stroke="#b4c2bc" strokeWidth="2" />
+            <rect
+                x="30"
+                y="38"
+                width="100"
+                height="188"
+                rx="18"
+                fill="#e6efeb"
+                stroke="#b4c2bc"
+                strokeWidth="2"
+            />
 
             {/* contents */}
-            <g clipPath={`url(#jarBody-${Math.round(fill * 100)}-${ink.slice(1)})`}>
-                <rect x="30" y={level} width="100" height={226 - level} fill={ink} opacity="0.82" />
-                <rect x="30" y={level} width="100" height="7" fill="#ffffff" opacity="0.32" />
+            <g
+                clipPath={`url(#jarBody-${Math.round(fill * 100)}-${ink.slice(1)})`}
+            >
+                <rect
+                    x="30"
+                    y={level}
+                    width="100"
+                    height={226 - level}
+                    fill={ink}
+                    opacity="0.82"
+                />
+                <rect
+                    x="30"
+                    y={level}
+                    width="100"
+                    height="7"
+                    fill="#ffffff"
+                    opacity="0.32"
+                />
             </g>
 
             {/* refraction: edge shading and the weight of the contents at the foot */}
-            <g clipPath={`url(#jarBody-${Math.round(fill * 100)}-${ink.slice(1)})`}>
-                <rect x="30" y="38" width="100" height="188" fill="url(#jarEdge)" />
-                <rect x="30" y="38" width="100" height="188" fill="url(#jarFoot)" />
+            <g
+                clipPath={`url(#jarBody-${Math.round(fill * 100)}-${ink.slice(1)})`}
+            >
+                <rect
+                    x="30"
+                    y="38"
+                    width="100"
+                    height="188"
+                    fill="url(#jarEdge)"
+                />
+                <rect
+                    x="30"
+                    y="38"
+                    width="100"
+                    height="188"
+                    fill="url(#jarFoot)"
+                />
             </g>
 
             {/* glass highlight */}
-            <rect x="41" y="54" width="9" height="152" rx="4.5" fill="#ffffff" opacity="0.5" />
-            <rect x="117" y="66" width="4" height="120" rx="2" fill="#ffffff" opacity="0.3" />
+            <rect
+                x="41"
+                y="54"
+                width="9"
+                height="152"
+                rx="4.5"
+                fill="#ffffff"
+                opacity="0.5"
+            />
+            <rect
+                x="117"
+                y="66"
+                width="4"
+                height="120"
+                rx="2"
+                fill="#ffffff"
+                opacity="0.3"
+            />
         </svg>
     );
 }
@@ -103,9 +207,15 @@ function AnatomyCard({ item }: { item: VesselItem }) {
                 <dl className="flex h-full flex-col justify-between gap-2">
                     {rows.map((row) => (
                         <div key={row.label} className="min-w-0">
-                            <dt className="stamp text-[8px] text-ink/85">{row.label}</dt>
+                            <dt className="stamp text-[8px] text-ink/85">
+                                {row.label}
+                            </dt>
                             <dd className="mt-[2px] line-clamp-2 text-[10.5px] leading-[1.32] text-ink">
-                                {row.value ?? <span className="italic text-ink/85">not written yet</span>}
+                                {row.value ?? (
+                                    <span className="text-ink/85 italic">
+                                        not written yet
+                                    </span>
+                                )}
                             </dd>
                         </div>
                     ))}
@@ -119,10 +229,17 @@ export function BandFront({ item, stage }: { item: VesselItem; stage: Stage }) {
     return (
         <div className="w-full rounded-[3px] shadow-[0_8px_18px_-12px_rgba(46,42,38,0.75)]">
             <div className="kraft ticket w-full rounded-[3px] px-2.5 py-2 text-ink">
-                <div className="h-[3px] w-full rounded-full" style={{ backgroundColor: item.category.ink }} />
-                <p className="stamp mt-1.5 text-[11.5px] leading-[1.15] tracking-[0.03em] sm:text-[13px]">{item.title}</p>
+                <div
+                    className="h-[3px] w-full rounded-full"
+                    style={{ backgroundColor: item.category.ink }}
+                />
+                <p className="stamp mt-1.5 text-[11.5px] leading-[1.15] tracking-[0.03em] sm:text-[13px]">
+                    {item.title}
+                </p>
                 <div className="mt-1.5 flex items-center justify-between gap-1.5">
-                    <span className="stamp text-[11px] tracking-[0.08em] text-ink/85">Day {item.day}</span>
+                    <span className="stamp text-[11px] tracking-[0.08em] text-ink/85">
+                        Day {item.day}
+                    </span>
                     <StageDots stage={stage} ink={item.category.ink} />
                 </div>
                 <p className="stamp mt-1 flex items-center gap-1 text-[9.5px] tracking-[0.13em] text-ink/85">
@@ -145,7 +262,9 @@ export function Vessel({
     openInitially?: boolean;
     flipable?: boolean;
 }) {
-    const [stage, setStage] = useState<Stage>(autoFlip ? 'understood' : item.stage);
+    const [stage, setStage] = useState<Stage>(
+        autoFlip ? 'understood' : item.stage,
+    );
     const [flipped, setFlipped] = useState(openInitially);
     const hostRef = useRef<HTMLDivElement | null>(null);
     const timers = useRef<number[]>([]);
@@ -163,8 +282,12 @@ export function Vessel({
             (entries) => {
                 if (!entries.some((entry) => entry.isIntersecting)) return;
                 observer.disconnect();
-                timers.current.push(window.setTimeout(() => setFlipped(true), 700));
-                timers.current.push(window.setTimeout(() => setStage(item.stage), 1700));
+                timers.current.push(
+                    window.setTimeout(() => setFlipped(true), 700),
+                );
+                timers.current.push(
+                    window.setTimeout(() => setStage(item.stage), 1700),
+                );
             },
             { threshold: 0.45 },
         );
@@ -180,17 +303,25 @@ export function Vessel({
     return (
         <div ref={hostRef} className="relative w-full">
             <div className="relative mx-auto aspect-[160/232] w-full max-w-[200px]">
-                <Jar fill={stage === 'complete' ? item.fill : item.fill * 0.78} ink={item.category.ink} className="absolute inset-0 h-full w-full" />
+                <Jar
+                    fill={stage === 'complete' ? item.fill : item.fill * 0.78}
+                    ink={item.category.ink}
+                    className="absolute inset-0 h-full w-full"
+                />
 
                 <div className="absolute inset-x-[4%] top-[31%] bottom-[5%] [perspective:1400px]">
                     <div
                         className="relative h-full w-full transition-transform duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)] [transform-style:preserve-3d]"
-                        style={{ transform: flipped ? 'rotateY(180deg)' : 'rotateY(0deg)' }}
+                        style={{
+                            transform: flipped
+                                ? 'rotateY(180deg)'
+                                : 'rotateY(0deg)',
+                        }}
                     >
                         <div className="absolute inset-0 flex items-center justify-center [backface-visibility:hidden]">
                             <BandFront item={item} stage={stage} />
                         </div>
-                        <div className="absolute inset-0 [backface-visibility:hidden] [transform:rotateY(180deg)]">
+                        <div className="absolute inset-0 [transform:rotateY(180deg)] [backface-visibility:hidden]">
                             <AnatomyCard item={item} />
                         </div>
                     </div>
@@ -212,7 +343,5 @@ export function Vessel({
 }
 
 export function AnatomyPanel({ item }: { item: VesselItem }) {
-    return (
-        <AnatomyCard item={item} />
-    );
+    return <AnatomyCard item={item} />;
 }

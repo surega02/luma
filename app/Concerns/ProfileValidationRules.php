@@ -17,7 +17,23 @@ trait ProfileValidationRules
     {
         return [
             'name' => $this->nameRules(),
+            'username' => $this->usernameRules($userId),
             'email' => $this->emailRules($userId),
+        ];
+    }
+
+    /**
+     * Get the validation rules used when the user updates their own profile.
+     *
+     * Email is intentionally excluded: it is never editable after signup.
+     *
+     * @return array<string, array<int, ValidationRule|array<mixed>|string>>
+     */
+    protected function profileUpdateRules(?int $userId = null): array
+    {
+        return [
+            'name' => $this->nameRules(),
+            'username' => $this->usernameRules($userId),
         ];
     }
 
@@ -29,6 +45,23 @@ trait ProfileValidationRules
     protected function nameRules(): array
     {
         return ['required', 'string', 'max:255'];
+    }
+
+    /**
+     * Get the validation rules used to validate user names.
+     *
+     * @return array<int, ValidationRule|array<mixed>|string>
+     */
+    protected function usernameRules(?int $userId = null): array
+    {
+        return [
+            'required',
+            'string',
+            'max:255',
+            $userId === null
+                ? Rule::unique(User::class, 'username')
+                : Rule::unique(User::class, 'username')->ignore($userId),
+        ];
     }
 
     /**

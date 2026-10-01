@@ -89,29 +89,32 @@ erDiagram
 
 ## 2. Entity Overview
 
-| Entity | Purpose |
-|---|---|
-| `users` | Authentication, profile, and ownership boundary |
-| `knowledges` | Main knowledge record |
-| `categories` | User-owned custom categories |
-| `category_knowledge` | Pivot table for Knowledge ↔ Category many-to-many relation |
-| `insights` | User reflections attached to a Knowledge |
-| `definition_versions` | History of Definition saves |
-| `understanding_versions` | History of My Understanding saves |
+| Entity                   | Purpose                                                    |
+| ------------------------ | ---------------------------------------------------------- |
+| `users`                  | Authentication, profile, and ownership boundary            |
+| `knowledges`             | Main knowledge record                                      |
+| `categories`             | User-owned custom categories                               |
+| `category_knowledge`     | Pivot table for Knowledge ↔ Category many-to-many relation |
+| `insights`               | User reflections attached to a Knowledge                   |
+| `definition_versions`    | History of Definition saves                                |
+| `understanding_versions` | History of My Understanding saves                          |
 
 ## 3. Relationship Rules
 
 ### User → Knowledge
+
 - One user can own many Knowledge records.
 - Each Knowledge belongs to exactly one user.
 - Data access must always be scoped to the authenticated user's `user_id`.
 
 ### User → Category
+
 - One user can create many Categories.
 - Each Category belongs to exactly one user.
 - Category names must be unique per user.
 
 ### Knowledge ↔ Category
+
 - Many-to-many relationship.
 - Implemented through `category_knowledge`.
 - One Knowledge can have zero or many Categories.
@@ -119,17 +122,20 @@ erDiagram
 - A duplicate `(knowledge_id, category_id)` pair is not allowed.
 
 ### Knowledge → Insight
+
 - One Knowledge can have zero or many Insights.
 - Each Insight belongs to exactly one Knowledge.
 - Creating, editing, or deleting an Insight updates the parent Knowledge `updated_at`.
 
 ### Knowledge → Definition Version
+
 - One Knowledge has one or many Definition Versions.
 - A newly created Knowledge starts with Definition Version `1`.
 - Every `Save Changes` creates a new Definition Version, even when the content is unchanged.
 - Version numbers are sequential per Knowledge.
 
 ### Knowledge → My Understanding Version
+
 - One Knowledge can have zero or many Understanding Versions.
 - If `my_understanding` is empty on creation, no version exists yet.
 - The first saved My Understanding becomes Version `1`.
@@ -139,11 +145,11 @@ erDiagram
 
 Recommended state machine for MVP:
 
-| Status | Condition |
-|---|---|
-| `captured` | `my_understanding` is empty |
-| `understood` | `my_understanding` exists and there are zero Insights |
-| `complete` | `my_understanding` exists and there is at least one Insight |
+| Status       | Condition                                                   |
+| ------------ | ----------------------------------------------------------- |
+| `captured`   | `my_understanding` is empty                                 |
+| `understood` | `my_understanding` exists and there are zero Insights       |
+| `complete`   | `my_understanding` exists and there is at least one Insight |
 
 The status is system-generated and should not be directly editable by the user.
 

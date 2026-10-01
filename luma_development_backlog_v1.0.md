@@ -23,20 +23,20 @@
 
 # 2. Epic Overview
 
-| Epic | Name | Priority |
-|---|---|---:|
-| E01 | Project Bootstrap & Engineering Foundation | P0 |
-| E02 | Authentication & Account Management | P0 |
-| E03 | Database, Models & Authorization Foundation | P0 |
-| E04 | Knowledge Management | P0 |
-| E05 | Category Management | P0 |
-| E06 | Search, Filter, Sorting & Pagination | P0 |
-| E07 | Insight & Version History | P0 |
-| E08 | Trash & Lifecycle Management | P0 |
-| E09 | Dashboard & Learning Analytics | P0 |
-| E10 | React/Inertia UX Infrastructure | P0 |
-| E11 | Responsive Navigation & Application Shell | P0 |
-| E12 | Testing, Security & Release Hardening | P0 |
+| Epic | Name                                        | Priority |
+| ---- | ------------------------------------------- | -------: |
+| E01  | Project Bootstrap & Engineering Foundation  |       P0 |
+| E02  | Authentication & Account Management         |       P0 |
+| E03  | Database, Models & Authorization Foundation |       P0 |
+| E04  | Knowledge Management                        |       P0 |
+| E05  | Category Management                         |       P0 |
+| E06  | Search, Filter, Sorting & Pagination        |       P0 |
+| E07  | Insight & Version History                   |       P0 |
+| E08  | Trash & Lifecycle Management                |       P0 |
+| E09  | Dashboard & Learning Analytics              |       P0 |
+| E10  | React/Inertia UX Infrastructure             |       P0 |
+| E11  | Responsive Navigation & Application Shell   |       P0 |
+| E12  | Testing, Security & Release Hardening       |       P0 |
 
 ---
 
@@ -80,14 +80,15 @@ E12 Testing / Hardening
 
 Tasks:
 
-- [ ] Create Laravel 13 application.
-- [ ] Configure PHP 8.3+.
-- [ ] Configure local `.env`.
-- [ ] Configure application name as `Luma`.
-- [ ] Configure application URL.
-- [ ] Verify application boots.
+- [x] Create Laravel 13 application.
+- [x] Configure PHP 8.3+.
+- [x] Configure local `.env`.
+- [x] Configure application name as `Luma`.
+- [x] Configure application URL.
+- [x] Verify application boots.
 
 **Acceptance Criteria**
+
 - Laravel application starts without error.
 - Environment variables load correctly.
 
@@ -100,15 +101,16 @@ Tasks:
 
 Tasks:
 
-- [ ] Install Laravel official React starter kit.
-- [ ] Verify React 19.
-- [ ] Verify Inertia 3.
-- [ ] Verify TypeScript.
-- [ ] Verify Tailwind.
-- [ ] Verify Vite.
-- [ ] Verify authentication pages compile.
+- [x] Install Laravel official React starter kit.
+- [x] Verify React 19.
+- [x] Verify Inertia 3.
+- [x] Verify TypeScript.
+- [x] Verify Tailwind.
+- [x] Verify Vite.
+- [x] Verify authentication pages compile.
 
 **Acceptance Criteria**
+
 - React/Inertia starter application runs.
 - Login/Register pages render.
 
@@ -121,12 +123,13 @@ Tasks:
 
 Tasks:
 
-- [ ] Create `luma` MySQL database.
-- [ ] Configure database credentials.
-- [ ] Run base migrations.
-- [ ] Verify connection.
+- [x] Create `db_luma` MySQL database.
+- [x] Configure database credentials.
+- [x] Run base migrations.
+- [x] Verify connection.
 
 **Acceptance Criteria**
+
 - `php artisan migrate` succeeds.
 - Application can read/write MySQL.
 
@@ -139,13 +142,14 @@ Tasks:
 
 Tasks:
 
-- [ ] Configure PHP formatter/linter.
-- [ ] Configure TypeScript/ESLint.
-- [ ] Configure import conventions.
-- [ ] Define naming conventions.
-- [ ] Add basic CI checks.
+- [x] Configure PHP formatter/linter.
+- [x] Configure TypeScript/ESLint.
+- [x] Configure import conventions.
+- [x] Define naming conventions.
+- [x] Add basic CI checks.
 
 **Acceptance Criteria**
+
 - CI can run formatter/lint/type checks.
 
 ---
@@ -159,15 +163,16 @@ Tasks:
 
 Tasks:
 
-- [ ] Enable registration.
-- [ ] Name validation.
-- [ ] Username validation.
-- [ ] Email validation.
-- [ ] Password minimum 8 characters.
-- [ ] Password confirmation.
-- [ ] Unique username/email.
+- [x] Enable registration.
+- [x] Name validation.
+- [x] Username validation.
+- [x] Email validation.
+- [x] Password minimum 8 characters.
+- [x] Password confirmation.
+- [x] Unique username/email.
 
 **Acceptance Criteria**
+
 - User can register successfully.
 - Invalid registration shows field-level errors.
 
@@ -180,12 +185,13 @@ Tasks:
 
 Tasks:
 
-- [ ] Login.
-- [ ] Logout.
-- [ ] Redirect authenticated user to Dashboard.
-- [ ] Protect application routes with auth middleware.
+- [x] Login.
+- [x] Logout.
+- [x] Redirect authenticated user to Dashboard.
+- [x] Protect application routes with auth middleware.
 
 **Acceptance Criteria**
+
 - Unauthenticated user cannot access protected pages.
 - Authenticated user can log out.
 
@@ -198,12 +204,13 @@ Tasks:
 
 Tasks:
 
-- [ ] Configure password reset.
-- [ ] Configure mail delivery for local/test environment.
-- [ ] Validate reset token.
-- [ ] Enforce 8-character minimum.
+- [x] Configure password reset.
+- [x] Configure mail delivery for local/test environment.
+- [x] Validate reset token.
+- [x] Enforce 8-character minimum.
 
 **Acceptance Criteria**
+
 - User can request password reset.
 - User can set a new password.
 
@@ -216,14 +223,15 @@ Tasks:
 
 Tasks:
 
-- [ ] Profile page.
-- [ ] Update name.
-- [ ] Update username.
-- [ ] Unique username validation.
-- [ ] Change password.
-- [ ] Profile success/error feedback.
+- [x] Profile page.
+- [x] Update name.
+- [x] Update username.
+- [x] Unique username validation.
+- [x] Change password.
+- [x] Profile success/error feedback.
 
 **Acceptance Criteria**
+
 - Profile changes persist.
 - Email remains non-editable.
 
@@ -236,18 +244,19 @@ Tasks:
 
 Tasks:
 
-- [ ] Delete account UI.
-- [ ] Confirmation.
-- [ ] Current password verification.
-- [ ] Transaction for data deletion.
-- [ ] Delete owned Knowledge.
-- [ ] Delete Categories.
-- [ ] Delete Insights.
-- [ ] Delete Version History.
-- [ ] Delete pivot rows.
-- [ ] Delete User.
+- [x] Delete account UI.
+- [x] Confirmation.
+- [x] Current password verification.
+- [x] Transaction for data deletion.
+- [x] Delete owned Knowledge.
+- [x] Delete Categories.
+- [x] Delete Insights.
+- [x] Delete Version History.
+- [x] Delete pivot rows.
+- [x] Delete User.
 
 **Acceptance Criteria**
+
 - Wrong password blocks deletion.
 - Correct password permanently deletes account and owned data.
 
@@ -262,14 +271,15 @@ Tasks:
 
 Tables:
 
-- [ ] knowledges
-- [ ] categories
-- [ ] category_knowledge
-- [ ] insights
-- [ ] definition_versions
-- [ ] understanding_versions
+- [x] knowledges
+- [x] categories
+- [x] category_knowledge
+- [x] insights
+- [x] definition_versions
+- [x] understanding_versions
 
 **Acceptance Criteria**
+
 - Migrations run on a clean database.
 - Foreign keys and timestamps are correct.
 - Knowledge has `deleted_at`.
@@ -283,15 +293,16 @@ Tables:
 
 Tasks:
 
-- [ ] Unique users.email.
-- [ ] Unique users.username.
-- [ ] Unique categories(user_id, name).
-- [ ] Unique category_knowledge(knowledge_id, category_id).
-- [ ] Unique definition_versions(knowledge_id, version).
-- [ ] Unique understanding_versions(knowledge_id, version).
-- [ ] Add required indexes.
+- [x] Unique users.email.
+- [x] Unique users.username.
+- [x] Unique categories(user_id, name).
+- [x] Unique category_knowledge(knowledge_id, category_id).
+- [x] Unique definition_versions(knowledge_id, version).
+- [x] Unique understanding_versions(knowledge_id, version).
+- [x] Add required indexes.
 
 **Acceptance Criteria**
+
 - Duplicate records are prevented at DB level.
 
 ---
@@ -303,16 +314,17 @@ Tasks:
 
 Tasks:
 
-- [ ] Knowledge model.
-- [ ] Category model.
-- [ ] Insight model.
-- [ ] DefinitionVersion model.
-- [ ] UnderstandingVersion model.
-- [ ] User relationships.
-- [ ] Many-to-many category relationship.
-- [ ] SoftDeletes on Knowledge.
+- [x] Knowledge model.
+- [x] Category model.
+- [x] Insight model.
+- [x] DefinitionVersion model.
+- [x] UnderstandingVersion model.
+- [x] User relationships.
+- [x] Many-to-many category relationship.
+- [x] SoftDeletes on Knowledge.
 
 **Acceptance Criteria**
+
 - Required relationships work in feature tests.
 
 ---
@@ -324,12 +336,13 @@ Tasks:
 
 Tasks:
 
-- [ ] Create `KnowledgeStatus` enum.
-- [ ] Add model cast.
-- [ ] Create status resolver/action.
-- [ ] Prevent client from setting status.
+- [x] Create `KnowledgeStatus` enum.
+- [x] Add model cast.
+- [x] Create status resolver/action.
+- [x] Prevent client from setting status.
 
 **Acceptance Criteria**
+
 - Status is always derived by server-side business logic.
 
 ---
@@ -341,13 +354,14 @@ Tasks:
 
 Tasks:
 
-- [ ] KnowledgePolicy.
-- [ ] CategoryPolicy.
-- [ ] InsightPolicy.
-- [ ] View/update/delete/restore/forceDelete authorization.
-- [ ] Add cross-user authorization tests.
+- [x] KnowledgePolicy.
+- [x] CategoryPolicy.
+- [x] InsightPolicy.
+- [x] View/update/delete/restore/forceDelete authorization.
+- [x] Add cross-user authorization tests.
 
 **Acceptance Criteria**
+
 - User cannot access another user's resources by changing IDs.
 
 ---
@@ -361,16 +375,17 @@ Tasks:
 
 Tasks:
 
-- [ ] Knowledge Index page.
-- [ ] Card-based list.
-- [ ] Definition snippet.
-- [ ] Categories.
-- [ ] Status.
-- [ ] Created Date.
-- [ ] Open/Edit/Delete actions.
-- [ ] Empty state.
+- [x] Knowledge Index page.
+- [x] Card-based list.
+- [x] Definition snippet.
+- [x] Categories.
+- [x] Status.
+- [x] Created Date.
+- [x] Open/Edit/Delete actions.
+- [x] Empty state.
 
 **Acceptance Criteria**
+
 - User sees only their active Knowledge.
 - Card contains required MVP fields.
 
@@ -383,20 +398,21 @@ Tasks:
 
 Tasks:
 
-- [ ] Global Quick Capture button.
-- [ ] Modal component.
-- [ ] Title field.
-- [ ] Definition Tiptap editor.
-- [ ] My Understanding Tiptap editor.
-- [ ] Searchable multi-select category selector.
-- [ ] Create Category from selector.
-- [ ] Source field.
-- [ ] URL field.
-- [ ] Save.
-- [ ] Validation.
-- [ ] Close discards input.
+- [x] Global Quick Capture button.
+- [x] Modal component.
+- [x] Title field.
+- [x] Definition Tiptap editor.
+- [x] My Understanding Tiptap editor.
+- [x] Searchable multi-select category selector.
+- [x] Create Category from selector.
+- [x] Source field.
+- [x] URL field.
+- [x] Save.
+- [x] Validation.
+- [x] Close discards input.
 
 **Acceptance Criteria**
+
 - User can create Knowledge without leaving current page.
 - Required field errors remain inside modal.
 - Successful save returns to Knowledge List.
@@ -410,16 +426,17 @@ Tasks:
 
 Tasks:
 
-- [ ] StoreKnowledgeRequest.
-- [ ] CreateKnowledge action.
-- [ ] Create Definition Version 1.
-- [ ] Create Understanding Version 1 when applicable.
-- [ ] Sync categories.
-- [ ] Calculate initial status.
-- [ ] Wrap in transaction.
-- [ ] Success flash.
+- [x] StoreKnowledgeRequest.
+- [x] CreateKnowledge action.
+- [x] Create Definition Version 1.
+- [x] Create Understanding Version 1 when applicable.
+- [x] Sync categories.
+- [x] Calculate initial status.
+- [x] Wrap in transaction.
+- [x] Success flash.
 
 **Acceptance Criteria**
+
 - Valid create persists every related record correctly.
 - Failed transaction leaves no partial records.
 
@@ -432,17 +449,18 @@ Tasks:
 
 Tasks:
 
-- [ ] Detail page.
-- [ ] Title + status.
-- [ ] Definition.
-- [ ] My Understanding.
-- [ ] Insight section.
-- [ ] Categories.
-- [ ] Source.
-- [ ] Open Source link.
-- [ ] Back/Edit/Delete actions.
+- [x] Detail page.
+- [x] Title + status.
+- [x] Definition.
+- [x] My Understanding.
+- [x] Insight section.
+- [x] Categories.
+- [x] Source.
+- [x] Open Source link.
+- [x] Back/Edit/Delete actions.
 
 **Acceptance Criteria**
+
 - All Knowledge fields display in PRD order.
 
 ---
@@ -454,17 +472,18 @@ Tasks:
 
 Tasks:
 
-- [ ] Edit mode.
-- [ ] Title editing.
-- [ ] Definition editor.
-- [ ] My Understanding editor.
-- [ ] Category selector.
-- [ ] Source/URL.
-- [ ] Save Changes.
-- [ ] Cancel.
-- [ ] Unsaved changes confirmation.
+- [x] Edit mode.
+- [x] Title editing.
+- [x] Definition editor.
+- [x] My Understanding editor.
+- [x] Category selector.
+- [x] Source/URL.
+- [x] Save Changes.
+- [x] Cancel.
+- [x] Unsaved changes confirmation.
 
 **Acceptance Criteria**
+
 - One Save Changes persists all changed fields.
 - Cancel discards changes.
 - Leaving dirty form shows Leave/Stay confirmation.
@@ -478,16 +497,17 @@ Tasks:
 
 Tasks:
 
-- [ ] UpdateKnowledgeRequest.
-- [ ] UpdateKnowledge action.
-- [ ] Create new Definition Version every save.
-- [ ] Create next Understanding Version when value exists.
-- [ ] Sync categories.
-- [ ] Recalculate status.
-- [ ] Transaction.
-- [ ] Success flash.
+- [x] UpdateKnowledgeRequest.
+- [x] UpdateKnowledge action.
+- [x] Create new Definition Version every save.
+- [x] Create next Understanding Version when value exists.
+- [x] Sync categories.
+- [x] Recalculate status.
+- [x] Transaction.
+- [x] Success flash.
 
 **Acceptance Criteria**
+
 - A successful Save always creates required version records according to rules.
 
 ---
@@ -499,12 +519,13 @@ Tasks:
 
 Tasks:
 
-- [ ] Delete confirmation.
-- [ ] Soft delete.
-- [ ] Success toast.
-- [ ] Remove from active list.
+- [x] Delete confirmation.
+- [x] Soft delete.
+- [x] Success toast.
+- [x] Remove from active list.
 
 **Acceptance Criteria**
+
 - Knowledge appears in Trash after deletion.
 
 ---
@@ -528,6 +549,7 @@ Tasks:
 - [ ] Empty state.
 
 **Acceptance Criteria**
+
 - Category count reflects active Knowledge.
 
 ---
@@ -547,6 +569,7 @@ Tasks:
 - [ ] Success toast.
 
 **Acceptance Criteria**
+
 - Duplicate name in same account is rejected.
 
 ---
@@ -580,6 +603,7 @@ Tasks:
 - [ ] Uncategorized behavior.
 
 **Acceptance Criteria**
+
 - No Knowledge is deleted when Category is removed.
 
 ---
@@ -598,6 +622,7 @@ Tasks:
 - [ ] Return newly created category to selector.
 
 **Acceptance Criteria**
+
 - User can create and select a new Category without leaving Knowledge form.
 
 ---
@@ -622,6 +647,7 @@ Tasks:
 - [ ] Empty search result state.
 
 **Acceptance Criteria**
+
 - Search `machine` finds `Machine Learning`.
 - Search is case-insensitive.
 
@@ -641,6 +667,7 @@ Tasks:
 - [ ] Preserve filter in query string.
 
 **Acceptance Criteria**
+
 - Programming + AI returns Knowledge matching either category.
 
 ---
@@ -658,6 +685,7 @@ Tasks:
 - [ ] Allow-list sort values.
 
 **Acceptance Criteria**
+
 - Invalid sort value cannot manipulate SQL.
 
 ---
@@ -676,6 +704,7 @@ Tasks:
 - [ ] Preserve query/filter state.
 
 **Acceptance Criteria**
+
 - Search/filter/sort persists while navigating pages.
 
 ---
@@ -697,6 +726,7 @@ Tasks:
 - [ ] Pagination.
 
 **Acceptance Criteria**
+
 - No N+1 query on Knowledge List.
 
 ---
@@ -720,6 +750,7 @@ Tasks:
 - [ ] Success toast.
 
 **Acceptance Criteria**
+
 - First Insight can transition Understood → Complete.
 
 ---
@@ -738,6 +769,7 @@ Tasks:
 - [ ] Updated timestamp.
 
 **Acceptance Criteria**
+
 - Insight changes persist without auto-save.
 
 ---
@@ -755,6 +787,7 @@ Tasks:
 - [ ] Update Knowledge timestamp.
 
 **Acceptance Criteria**
+
 - Deleting last Insight changes Complete → Understood.
 
 ---
@@ -775,6 +808,7 @@ Tasks:
 - [ ] Pagination.
 
 **Acceptance Criteria**
+
 - Version history follows every Save Changes.
 
 ---
@@ -795,6 +829,7 @@ Tasks:
 - [ ] Pagination.
 
 **Acceptance Criteria**
+
 - First saved My Understanding becomes Version 1.
 
 ---
@@ -819,6 +854,7 @@ Tasks:
 - [ ] Empty state.
 
 **Acceptance Criteria**
+
 - Only current user's trashed Knowledge appears.
 
 ---
@@ -838,6 +874,7 @@ Tasks:
 - [ ] Missing Category behavior.
 
 **Acceptance Criteria**
+
 - Deleted Category is not recreated on restore.
 
 ---
@@ -855,6 +892,7 @@ Tasks:
 - [ ] Success toast.
 
 **Acceptance Criteria**
+
 - Knowledge and all dependent MVP data are permanently removed.
 
 ---
@@ -875,6 +913,7 @@ Tasks:
 - [ ] SQL aggregate query.
 
 **Acceptance Criteria**
+
 - Counts match active Knowledge only.
 
 ---
@@ -894,6 +933,7 @@ Tasks:
 - [ ] Chart data contract.
 
 **Acceptance Criteria**
+
 - Every one of the last 30 days has a data point.
 
 ---
@@ -936,6 +976,7 @@ Tasks:
 - [ ] Avoid N+1.
 
 **Acceptance Criteria**
+
 - Category ranking reflects Knowledge count, not Insight count.
 
 ---
@@ -973,6 +1014,7 @@ Tasks:
 - [ ] Safe area above bottom navigation.
 
 **Acceptance Criteria**
+
 - Every successful mutation can display product-defined success feedback.
 
 ---
@@ -1012,12 +1054,12 @@ Tasks:
 
 Tasks:
 
-- [ ] Generic confirmation component.
-- [ ] Delete Knowledge.
+- [x] Generic confirmation component.
+- [x] Delete Knowledge.
 - [ ] Permanent Delete.
 - [ ] Delete Category.
-- [ ] Delete Account.
-- [ ] Unsaved Changes.
+- [x] Delete Account.
+- [x] Unsaved Changes.
 
 ---
 
@@ -1028,17 +1070,18 @@ Tasks:
 
 Tasks:
 
-- [ ] Tiptap setup.
-- [ ] Bold.
-- [ ] Italic.
-- [ ] Bullet list.
-- [ ] Ordered list.
-- [ ] Link.
-- [ ] Placeholder.
-- [ ] Sanitized HTML handling.
-- [ ] Display renderer.
+- [x] Tiptap setup.
+- [x] Bold.
+- [x] Italic.
+- [x] Bullet list.
+- [x] Ordered list.
+- [x] Link.
+- [x] Placeholder.
+- [x] Sanitized HTML handling.
+- [x] Display renderer.
 
 **Acceptance Criteria**
+
 - Same content can be edited and safely rendered.
 
 ---
@@ -1050,12 +1093,12 @@ Tasks:
 
 Tasks:
 
-- [ ] Search categories.
-- [ ] Multi-select.
-- [ ] Selected chips.
+- [x] Search categories.
+- [x] Multi-select.
+- [x] Selected chips.
 - [ ] Keyboard support.
-- [ ] Create Category action.
-- [ ] Empty category results.
+- [x] Create Category action.
+- [x] Empty category results.
 
 ---
 
@@ -1108,6 +1151,7 @@ Tasks:
 - [ ] No horizontal overflow.
 
 **Acceptance Criteria**
+
 - Primary flows work at mobile, tablet, and desktop widths.
 
 ---

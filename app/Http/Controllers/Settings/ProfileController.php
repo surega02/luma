@@ -9,6 +9,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -31,11 +32,6 @@ class ProfileController extends Controller
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
         $request->user()->fill($request->validated());
-
-        if ($request->user()->isDirty('email')) {
-            $request->user()->email_verified_at = null;
-        }
-
         $request->user()->save();
 
         Inertia::flash('toast', ['type' => 'success', 'message' => __('Profile updated.')]);
@@ -50,12 +46,18 @@ class ProfileController extends Controller
     {
         $user = $request->user();
 
+        // Logging out cycles the remember token via a save, so it must run
+        // before the row disappears or the save would re-insert it.
         Auth::logout();
-
-        $user->delete();
 
         $request->session()->invalidate();
         $request->session()->regenerateToken();
+
+        // Account data spans several tables; the row and every dependent
+        // record must disappear together or not at all.
+        DB::transaction(function () use ($user): void {
+            $user->delete();
+        });
 
         return redirect('/');
     }

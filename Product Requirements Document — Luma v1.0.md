@@ -1,4 +1,5 @@
 # Product Requirements Document
+
 ## Luma v1.0
 
 **Tagline:**  
@@ -688,8 +689,8 @@ Flow:
 2. Editor terbuka.
 3. User memasukkan Insight.
 4. User memilih:
-   - Save
-   - Cancel
+    - Save
+    - Cancel
 
 Tidak ada auto-save.
 
@@ -701,8 +702,8 @@ Flow:
 2. Insight masuk edit mode.
 3. User melakukan perubahan.
 4. User memilih:
-   - Save
-   - Cancel
+    - Save
+    - Cancel
 
 Tidak ada auto-save.
 
@@ -1573,6 +1574,7 @@ Dashboard menunjukkan perkembangan knowledge sehingga user dapat melihat pertumb
 ### MVP
 
 **Authentication**
+
 - Register
 - Login
 - Logout
@@ -1582,6 +1584,7 @@ Dashboard menunjukkan perkembangan knowledge sehingga user dapat melihat pertumb
 - Delete Account
 
 **Knowledge**
+
 - Quick Capture
 - CRUD
 - Card List
@@ -1597,12 +1600,14 @@ Dashboard menunjukkan perkembangan knowledge sehingga user dapat melihat pertumb
 - Restore
 
 **Category**
+
 - CRUD
 - Multiple Category
 - Searchable Multi-select
 - Category Filter
 
 **Dashboard**
+
 - Progress
 - Growth
 - Recent Knowledge
@@ -1610,6 +1615,7 @@ Dashboard menunjukkan perkembangan knowledge sehingga user dapat melihat pertumb
 - Top Categories
 
 **UI**
+
 - Responsive
 - Desktop Sidebar
 - Mobile Bottom Navigation

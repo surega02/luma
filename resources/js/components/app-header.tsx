@@ -1,8 +1,17 @@
 import { Link, usePage } from '@inertiajs/react';
-import { BookOpen, Folder, LayoutGrid, Menu, Search } from 'lucide-react';
+import {
+    BookOpen,
+    Folder,
+    LayoutGrid,
+    Library,
+    Menu,
+    Search,
+    Sparkle,
+} from 'lucide-react';
 import AppLogo from '@/components/app-logo';
 import AppLogoIcon from '@/components/app-logo-icon';
 import { Breadcrumbs } from '@/components/breadcrumbs';
+import { useQuickCapture } from '@/components/knowledge/quick-capture-provider';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
 import {
@@ -33,6 +42,7 @@ import { useCurrentUrl } from '@/hooks/use-current-url';
 import { useInitials } from '@/hooks/use-initials';
 import { cn, toUrl } from '@/lib/utils';
 import { dashboard } from '@/routes';
+import { index as knowledgeIndex } from '@/routes/knowledge';
 import type { BreadcrumbItem, NavItem } from '@/types';
 
 type Props = {
@@ -44,6 +54,11 @@ const mainNavItems: NavItem[] = [
         title: 'Dashboard',
         href: dashboard(),
         icon: LayoutGrid,
+    },
+    {
+        title: 'Knowledge',
+        href: knowledgeIndex(),
+        icon: Library,
     },
 ];
 
@@ -68,6 +83,7 @@ export function AppHeader({ breadcrumbs = [] }: Props) {
     const { auth } = page.props;
     const getInitials = useInitials();
     const { isCurrentUrl, whenCurrentUrl } = useCurrentUrl();
+    const openQuickCapture = useQuickCapture();
 
     return (
         <>
@@ -177,6 +193,17 @@ export function AppHeader({ breadcrumbs = [] }: Props) {
                     </div>
 
                     <div className="ml-auto flex items-center space-x-2">
+                        <button
+                            type="button"
+                            onClick={openQuickCapture}
+                            aria-label="Quick Capture"
+                            className="stamp inline-flex h-9 w-9 items-center justify-center gap-1.5 rounded-[3px] bg-dill px-0 text-[11px] tracking-[0.14em] text-white transition-colors duration-200 hover:bg-dill-deep sm:w-auto sm:px-3.5"
+                        >
+                            <Sparkle className="size-4" aria-hidden="true" />
+                            <span className="hidden sm:inline">
+                                Quick Capture
+                            </span>
+                        </button>
                         <div className="relative flex items-center space-x-1">
                             <Button
                                 variant="ghost"

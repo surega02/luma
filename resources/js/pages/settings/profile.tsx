@@ -34,7 +34,7 @@ export default function Profile({
                 <Heading
                     variant="small"
                     title="Profile"
-                    description="Update your name and email address"
+                    description="Update your name and username"
                 />
 
                 <Form
@@ -66,23 +66,41 @@ export default function Profile({
                             </div>
 
                             <div className="grid gap-2">
+                                <Label htmlFor="username">Username</Label>
+
+                                <Input
+                                    id="username"
+                                    className="mt-1 block w-full"
+                                    defaultValue={auth.user.username}
+                                    name="username"
+                                    required
+                                    autoComplete="username"
+                                    placeholder="username"
+                                />
+
+                                <InputError
+                                    className="mt-2"
+                                    message={errors.username}
+                                />
+                            </div>
+
+                            <div className="grid gap-2">
                                 <Label htmlFor="email">Email address</Label>
 
                                 <Input
                                     id="email"
                                     type="email"
                                     className="mt-1 block w-full"
-                                    defaultValue={auth.user.email}
-                                    name="email"
-                                    required
-                                    autoComplete="username"
+                                    value={auth.user.email}
+                                    readOnly
+                                    aria-readonly="true"
+                                    autoComplete="email"
                                     placeholder="Email address"
                                 />
 
-                                <InputError
-                                    className="mt-2"
-                                    message={errors.email}
-                                />
+                                <p className="text-sm text-muted-foreground">
+                                    Your email address can't be changed here.
+                                </p>
                             </div>
 
                             {mustVerifyEmail &&

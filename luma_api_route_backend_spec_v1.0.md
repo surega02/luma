@@ -56,16 +56,16 @@ Controller
 
 ### Responsibility
 
-| Layer | Responsibility |
-|---|---|
-| Route | URL + HTTP method + middleware |
-| Controller | Orchestration, response, redirect |
+| Layer        | Responsibility                           |
+| ------------ | ---------------------------------------- |
+| Route        | URL + HTTP method + middleware           |
+| Controller   | Orchestration, response, redirect        |
 | Form Request | Input validation + request authorization |
-| Policy | Resource authorization |
-| Query Object | Complex read/query composition |
-| Action | Business operation with side effects |
-| Model | Persistence + relationships + casts |
-| Database | Integrity, FK, unique constraints |
+| Policy       | Resource authorization                   |
+| Query Object | Complex read/query composition           |
+| Action       | Business operation with side effects     |
+| Model        | Persistence + relationships + casts      |
+| Database     | Integrity, FK, unique constraints        |
 
 Controllers must remain thin.
 
@@ -75,12 +75,12 @@ Controllers must remain thin.
 
 ## 3.1 Public Routes
 
-| Method | URI | Name | Handler | Auth |
-|---|---|---|---|---|
-| GET | `/` | `home` | `Welcome` | Guest |
-| GET | `/login` | `login` | Starter Kit | Guest |
-| GET | `/register` | `register` | Starter Kit | Guest |
-| GET | `/forgot-password` | `password.request` | Starter Kit | Guest |
+| Method | URI                | Name               | Handler     | Auth  |
+| ------ | ------------------ | ------------------ | ----------- | ----- |
+| GET    | `/`                | `home`             | `Welcome`   | Guest |
+| GET    | `/login`           | `login`            | Starter Kit | Guest |
+| GET    | `/register`        | `register`         | Starter Kit | Guest |
+| GET    | `/forgot-password` | `password.request` | Starter Kit | Guest |
 
 Authentication routes are provided by the Laravel official React starter kit.
 
@@ -96,35 +96,35 @@ middleware: auth
 
 Main pages:
 
-| Method | URI | Name | Controller |
-|---|---|---|---|
-| GET | `/dashboard` | `dashboard` | `DashboardController@index` |
-| GET | `/knowledge` | `knowledge.index` | `KnowledgeController@index` |
-| POST | `/knowledge` | `knowledge.store` | `KnowledgeController@store` |
-| GET | `/knowledge/{knowledge}` | `knowledge.show` | `KnowledgeController@show` |
-| PATCH | `/knowledge/{knowledge}` | `knowledge.update` | `KnowledgeController@update` |
-| DELETE | `/knowledge/{knowledge}` | `knowledge.destroy` | `KnowledgeController@destroy` |
-| GET | `/categories` | `categories.index` | `CategoryController@index` |
-| POST | `/categories` | `categories.store` | `CategoryController@store` |
-| PATCH | `/categories/{category}` | `categories.update` | `CategoryController@update` |
-| DELETE | `/categories/{category}` | `categories.destroy` | `CategoryController@destroy` |
-| GET | `/trash` | `trash.index` | `TrashController@index` |
-| POST | `/knowledge/{knowledge}/restore` | `knowledge.restore` | `TrashController@restore` |
-| DELETE | `/knowledge/{knowledge}/force` | `knowledge.force-delete` | `TrashController@forceDelete` |
-| GET | `/profile` | `profile.index` | `ProfileController@index` |
-| PATCH | `/profile` | `profile.update` | `ProfileController@update` |
-| PUT | `/password` | `password.update` | `ProfileController@updatePassword` |
-| DELETE | `/profile` | `profile.destroy` | `ProfileController@destroy` |
+| Method | URI                              | Name                     | Controller                         |
+| ------ | -------------------------------- | ------------------------ | ---------------------------------- |
+| GET    | `/dashboard`                     | `dashboard`              | `DashboardController@index`        |
+| GET    | `/knowledge`                     | `knowledge.index`        | `KnowledgeController@index`        |
+| POST   | `/knowledge`                     | `knowledge.store`        | `KnowledgeController@store`        |
+| GET    | `/knowledge/{knowledge}`         | `knowledge.show`         | `KnowledgeController@show`         |
+| PATCH  | `/knowledge/{knowledge}`         | `knowledge.update`       | `KnowledgeController@update`       |
+| DELETE | `/knowledge/{knowledge}`         | `knowledge.destroy`      | `KnowledgeController@destroy`      |
+| GET    | `/categories`                    | `categories.index`       | `CategoryController@index`         |
+| POST   | `/categories`                    | `categories.store`       | `CategoryController@store`         |
+| PATCH  | `/categories/{category}`         | `categories.update`      | `CategoryController@update`        |
+| DELETE | `/categories/{category}`         | `categories.destroy`     | `CategoryController@destroy`       |
+| GET    | `/trash`                         | `trash.index`            | `TrashController@index`            |
+| POST   | `/knowledge/{knowledge}/restore` | `knowledge.restore`      | `TrashController@restore`          |
+| DELETE | `/knowledge/{knowledge}/force`   | `knowledge.force-delete` | `TrashController@forceDelete`      |
+| GET    | `/profile`                       | `profile.index`          | `ProfileController@index`          |
+| PATCH  | `/profile`                       | `profile.update`         | `ProfileController@update`         |
+| PUT    | `/password`                      | `password.update`        | `ProfileController@updatePassword` |
+| DELETE | `/profile`                       | `profile.destroy`        | `ProfileController@destroy`        |
 
 ---
 
 ## 3.3 Insight Routes
 
-| Method | URI | Name | Controller |
-|---|---|---|---|
-| POST | `/knowledge/{knowledge}/insights` | `knowledge.insights.store` | `InsightController@store` |
-| PATCH | `/insights/{insight}` | `insights.update` | `InsightController@update` |
-| DELETE | `/insights/{insight}` | `insights.destroy` | `InsightController@destroy` |
+| Method | URI                               | Name                       | Controller                  |
+| ------ | --------------------------------- | -------------------------- | --------------------------- |
+| POST   | `/knowledge/{knowledge}/insights` | `knowledge.insights.store` | `InsightController@store`   |
+| PATCH  | `/insights/{insight}`             | `insights.update`          | `InsightController@update`  |
+| DELETE | `/insights/{insight}`             | `insights.destroy`         | `InsightController@destroy` |
 
 Insight is a child resource of Knowledge for creation, while update/delete uses the Insight resource itself.
 
@@ -468,12 +468,12 @@ StoreKnowledgeRequest
 
 ```json
 {
-  "title": "Machine Learning",
-  "definition": "<p>...</p>",
-  "my_understanding": "<p>...</p>",
-  "category_ids": [1, 3],
-  "source": "Google AI Guide",
-  "url": "https://example.com"
+    "title": "Machine Learning",
+    "definition": "<p>...</p>",
+    "my_understanding": "<p>...</p>",
+    "category_ids": [1, 3],
+    "source": "Google AI Guide",
+    "url": "https://example.com"
 }
 ```
 
@@ -680,9 +680,9 @@ Each item:
 
 ```json
 {
-  "version": 3,
-  "content": "<p>...</p>",
-  "created_at": "2026-09-27T10:00:00+07:00"
+    "version": 3,
+    "content": "<p>...</p>",
+    "created_at": "2026-09-27T10:00:00+07:00"
 }
 ```
 
@@ -962,9 +962,9 @@ StoreCategoryRequest
 
 ```json
 {
-  "name": "Programming",
-  "color": "blue",
-  "icon": "code"
+    "name": "Programming",
+    "color": "blue",
+    "icon": "code"
 }
 ```
 
@@ -1115,7 +1115,7 @@ StoreInsightRequest
 
 ```json
 {
-  "content": "<p>This is my insight.</p>"
+    "content": "<p>This is my insight.</p>"
 }
 ```
 
@@ -1249,7 +1249,7 @@ GET /profile
         name: string;
         username: string;
         email: string;
-    };
+    }
 }
 ```
 
@@ -1410,13 +1410,13 @@ Flash:
 
 # 29. Authorization Matrix
 
-| Resource | View | Create | Update | Delete | Restore | Force Delete |
-|---|---:|---:|---:|---:|---:|---:|
-| Knowledge | Owner | Auth user | Owner | Owner | Owner | Owner |
-| Category | Owner | Auth user | Owner | Owner | — | — |
-| Insight | Parent owner | Knowledge owner | Parent owner | Parent owner | — | — |
-| Definition History | Knowledge owner | System | — | — | — | — |
-| Understanding History | Knowledge owner | System | — | — | — | — |
+| Resource              |            View |          Create |       Update |       Delete | Restore | Force Delete |
+| --------------------- | --------------: | --------------: | -----------: | -----------: | ------: | -----------: |
+| Knowledge             |           Owner |       Auth user |        Owner |        Owner |   Owner |        Owner |
+| Category              |           Owner |       Auth user |        Owner |        Owner |       — |            — |
+| Insight               |    Parent owner | Knowledge owner | Parent owner | Parent owner |       — |            — |
+| Definition History    | Knowledge owner |          System |            — |            — |       — |            — |
+| Understanding History | Knowledge owner |          System |            — |            — |       — |            — |
 
 No route should allow access to another user's resource by guessing an ID.
 
@@ -1699,7 +1699,7 @@ Laravel validation automatically redirects back with field errors.
 React reads:
 
 ```ts
-form.errors
+form.errors;
 ```
 
 Expected UX:

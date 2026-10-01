@@ -1,0 +1,111 @@
+import { useForm } from '@inertiajs/react';
+import { Loader2, Sparkle } from 'lucide-react';
+import { useEffect, type FormEvent } from 'react';
+import {
+    Dialog,
+    DialogContent,
+    DialogDescription,
+    DialogFooter,
+    DialogTitle,
+} from '@/components/ui/dialog';
+import { store as storeKnowledge } from '@/routes/knowledge';
+import KnowledgeFields, { type KnowledgeDraft } from './knowledge-fields';
+import { buttonPrimary, buttonSecondary } from './stamp';
+
+const EMPTY: KnowledgeDraft = {
+    title: '',
+    definition: '',
+    my_understanding: '',
+    source: '',
+    url: '',
+    category_ids: [],
+};
+
+/**
+ * Quick Capture (PRD §11): a global modal that creates Knowledge without
+ * leaving the current page. Closing it discards whatever was typed.
+ */
+export default function QuickCapture({
+    open,
+    onClose,
+}: {
+    open: boolean;
+    onClose: () => void;
+}) {
+    const { data, setData, post, processing, errors, reset, clearErrors } =
+        useForm<KnowledgeDraft>({ ...EMPTY });
+
+    // Closing discards input rather than preserving a draft.
+    useEffect(() => {
+        if (!open) {
+            reset();
+            clearErrors();
+        }
+    }, [open, reset, clearErrors]);
+
+    const submit = (event: FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+
+        post(storeKnowledge.url(), {
+            onSuccess: () => onClose(),
+        });
+    };
+
+    return (
+        <Dialog
+            open={open}
+            onOpenChange={(next) => {
+                if (!next) {
+                    onClose();
+                }
+            }}
+        >
+            <DialogContent className="gap-0 overflow-hidden rounded-[3px] border border-ink/30 bg-paper p-0 shadow-[0_30px_60px_-30px_rgba(46,42,38,0.6)] sm:max-w-xl">
+                <div className="kraft flex items-center gap-3 px-5 py-3.5">
+                    <Sparkle className="size-4 text-ink" aria-hidden="true" />
+                    <div className="min-w-0">
+                        <DialogTitle className="stamp text-[16px] tracking-[0.18em] text-ink">
+                            Quick Capture
+                        </DialogTitle>
+                        <DialogDescription className="truncate text-[16px] text-ink/85">
+                            Capture it now. Perfect it later.
+                        </DialogDescription>
+                    </div>
+                </div>
+
+                <form onSubmit={submit} noValidate>
+                    <div className="max-h-[65vh] overflow-y-auto px-5 py-5">
+                        <KnowledgeFields
+                            data={data}
+                            setData={(next) => setData(next)}
+                            errors={errors}
+                        />
+                    </div>
+
+                    <DialogFooter className="gap-2 border-t border-rule bg-mist px-5 py-4 sm:justify-end">
+                        <button
+                            type="button"
+                            onClick={onClose}
+                            className={buttonSecondary}
+                        >
+                            Cancel
+                        </button>
+                        <button
+                            type="submit"
+                            disabled={processing}
+                            className={buttonPrimary}
+                        >
+                            {processing && (
+                                <Loader2
+                                    className="size-3.5 animate-spin"
+                                    aria-hidden="true"
+                                />
+                            )}
+                            Save
+                        </button>
+                    </DialogFooter>
+                </form>
+            </DialogContent>
+        </Dialog>
+    );
+}

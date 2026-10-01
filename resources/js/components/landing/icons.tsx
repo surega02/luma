@@ -117,7 +117,13 @@ export function IconTrash(props: IconProps) {
 /** Dill frond — the world's ornament, drawn in the same stroke. */
 export function Sprig({ className = '' }: { className?: string }) {
     return (
-        <svg viewBox="0 0 120 40" className={className} fill="none" aria-hidden="true" focusable="false">
+        <svg
+            viewBox="0 0 120 40"
+            className={className}
+            fill="none"
+            aria-hidden="true"
+            focusable="false"
+        >
             <g stroke="currentColor" strokeWidth="1.4" strokeLinecap="round">
                 <path d="M4 34c18-4 34-11 48-21C64 7 78 3 96 5" />
                 <path d="M28 27c-2-5-6-8-11-9M34 24c-1-6-4-10-9-13M44 20c-1-6-3-11-7-15M56 15c0-6-2-11-5-15M68 11c1-6 0-11-3-15M80 8c2-6 2-11 0-16" />
@@ -128,10 +134,28 @@ export function Sprig({ className = '' }: { className?: string }) {
 }
 
 /** System-generated status marks: Captured, Understood, Complete. */
-export function StatusMark({ state, className = '' }: { state: 'captured' | 'understood' | 'complete'; className?: string }) {
+export function StatusMark({
+    state,
+    className = '',
+}: {
+    state: 'captured' | 'understood' | 'complete';
+    className?: string;
+}) {
     return (
-        <svg viewBox="0 0 16 16" className={className} aria-hidden="true" focusable="false">
-            <circle cx="8" cy="8" r="6.2" fill="none" stroke="currentColor" strokeWidth="1.6" />
+        <svg
+            viewBox="0 0 16 16"
+            className={className}
+            aria-hidden="true"
+            focusable="false"
+        >
+            <circle
+                cx="8"
+                cy="8"
+                r="6.2"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.6"
+            />
             {state !== 'captured' && (
                 <path
                     d="M8 1.8a6.2 6.2 0 0 1 0 12.4Z"
@@ -139,7 +163,15 @@ export function StatusMark({ state, className = '' }: { state: 'captured' | 'und
                     stroke="none"
                 />
             )}
-            {state === 'complete' && <circle cx="8" cy="8" r="6.2" fill="currentColor" stroke="none" />}
+            {state === 'complete' && (
+                <circle
+                    cx="8"
+                    cy="8"
+                    r="6.2"
+                    fill="currentColor"
+                    stroke="none"
+                />
+            )}
         </svg>
     );
 }
