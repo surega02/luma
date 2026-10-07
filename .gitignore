@@ -79,3 +79,6 @@ ehthumbs.db
 Homestead.json
 Homestead.yaml
 /auth.json
+
+# End-to-end screenshots
+/e2e/output

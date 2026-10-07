@@ -7,6 +7,21 @@ export type Category = {
     icon: string;
 };
 
+export type CategoryListItem = Category & {
+    knowledge_count: number;
+    created_at: string | null;
+};
+
+export type KnowledgeSort = 'recently_updated' | 'newest' | 'oldest';
+
+export type KnowledgeFilters = {
+    search: string;
+    category_ids: number[];
+    include_uncategorized: boolean;
+    sort: KnowledgeSort;
+    per_page: 10 | 20 | 50;
+};
+
 export type KnowledgeInsight = {
     id: number;
     content: string;
@@ -42,8 +57,6 @@ export type KnowledgeDetail = {
     updated_at: string | null;
     categories: Category[];
     insights: KnowledgeInsight[];
-    definition_versions: KnowledgeVersion[];
-    understanding_versions: KnowledgeVersion[];
 };
 
 export type Paginated<T> = {
@@ -65,4 +78,15 @@ export type KnowledgeFormData = {
     source: string;
     url: string;
     category_ids: number[];
+};
+
+export type TrashKnowledgeCard = {
+    id: number;
+    title: string;
+    definition_snippet: string;
+    status: KnowledgeStatus;
+    created_at: string | null;
+    updated_at: string | null;
+    deleted_at: string | null;
+    categories: Category[];
 };

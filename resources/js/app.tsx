@@ -8,6 +8,12 @@ import SettingsLayout from '@/layouts/settings/layout';
 
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
 
+// The blade boot skeleton covers the gap before React mounts; drop it on the
+// first painted frame so the real interface is never behind it.
+const dismissBootSkeleton = () => {
+    document.getElementById('boot-skeleton')?.remove();
+};
+
 void createInertiaApp({
     title: (title) => (title ? `${title} - ${appName}` : appName),
     layout: (name) => {
@@ -32,8 +38,11 @@ void createInertiaApp({
         );
     },
     progress: {
-        color: '#4B5563',
+        color: '#5C7F4A',
     },
+}).then(() => {
+    requestAnimationFrame(() => requestAnimationFrame(dismissBootSkeleton));
+    window.setTimeout(dismissBootSkeleton, 4000);
 });
 
 // This will set light / dark mode on load...

@@ -1,7 +1,8 @@
 import { Link } from '@inertiajs/react';
-import { BookOpen, FolderGit2, LayoutGrid, Library } from 'lucide-react';
+import { BookOpen, FolderGit2 } from 'lucide-react';
 import AppLogo from '@/components/app-logo';
 import { NavFooter } from '@/components/nav-footer';
+import { mainNavItems } from '@/components/nav-items';
 import { NavMain } from '@/components/nav-main';
 import { NavUser } from '@/components/nav-user';
 import {
@@ -14,21 +15,7 @@ import {
     SidebarMenuItem,
 } from '@/components/ui/sidebar';
 import { dashboard } from '@/routes';
-import { index as knowledgeIndex } from '@/routes/knowledge';
 import type { NavItem } from '@/types';
-
-const mainNavItems: NavItem[] = [
-    {
-        title: 'Dashboard',
-        href: dashboard(),
-        icon: LayoutGrid,
-    },
-    {
-        title: 'Knowledge',
-        href: knowledgeIndex(),
-        icon: Library,
-    },
-];
 
 const footerNavItems: NavItem[] = [
     {

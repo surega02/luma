@@ -57,9 +57,16 @@ export default function Profile({
                                     required
                                     autoComplete="name"
                                     placeholder="Full name"
+                                    aria-invalid={
+                                        errors.name ? true : undefined
+                                    }
+                                    aria-describedby={
+                                        errors.name ? 'name-error' : undefined
+                                    }
                                 />
 
                                 <InputError
+                                    id="name-error"
                                     className="mt-2"
                                     message={errors.name}
                                 />
@@ -76,9 +83,18 @@ export default function Profile({
                                     required
                                     autoComplete="username"
                                     placeholder="username"
+                                    aria-invalid={
+                                        errors.username ? true : undefined
+                                    }
+                                    aria-describedby={
+                                        errors.username
+                                            ? 'username-error'
+                                            : undefined
+                                    }
                                 />
 
                                 <InputError
+                                    id="username-error"
                                     className="mt-2"
                                     message={errors.username}
                                 />

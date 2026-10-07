@@ -139,10 +139,10 @@ class CreateKnowledgeTest extends TestCase
         $response->assertOk();
         $response->assertInertia(fn (Assert $page) => $page
             ->component('knowledge/index')
-            ->has('knowledge.data', 1)
-            ->where('knowledge.data.0.id', $mine->id)
-            ->where('knowledge.data.0.definition_snippet', $mine->definition_snippet)
-            ->where('knowledge.data.0.status', 'captured')
-            ->has('knowledge.data.0.categories', 0));
+            ->has('knowledges.data', 1)
+            ->where('knowledges.data.0.id', $mine->id)
+            ->where('knowledges.data.0.definition_snippet', $mine->definition_snippet)
+            ->where('knowledges.data.0.status', 'captured')
+            ->has('knowledges.data.0.categories', 0));
     }
 }

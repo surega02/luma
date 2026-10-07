@@ -10,6 +10,7 @@ import {
 } from '@/components/ui/dialog';
 import { store as storeKnowledge } from '@/routes/knowledge';
 import KnowledgeFields, { type KnowledgeDraft } from './knowledge-fields';
+import { categoryPanelIsOpen } from './category-selector';
 import { buttonPrimary, buttonSecondary } from './stamp';
 
 const EMPTY: KnowledgeDraft = {
@@ -32,16 +33,18 @@ export default function QuickCapture({
     open: boolean;
     onClose: () => void;
 }) {
-    const { data, setData, post, processing, errors, reset, clearErrors } =
+    const { data, setData, post, processing, errors, clearErrors } =
         useForm<KnowledgeDraft>({ ...EMPTY });
 
-    // Closing discards input rather than preserving a draft.
+    // Closing discards input rather than preserving a draft. Inertia v3 resets
+    // to the last submitted values after a successful post, so the discard
+    // writes the empty draft explicitly.
     useEffect(() => {
         if (!open) {
-            reset();
+            setData({ ...EMPTY });
             clearErrors();
         }
-    }, [open, reset, clearErrors]);
+    }, [open, setData, clearErrors]);
 
     const submit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -60,7 +63,14 @@ export default function QuickCapture({
                 }
             }}
         >
-            <DialogContent className="gap-0 overflow-hidden rounded-[3px] border border-ink/30 bg-paper p-0 shadow-[0_30px_60px_-30px_rgba(46,42,38,0.6)] sm:max-w-xl">
+            <DialogContent
+                className="gap-0 overflow-hidden rounded-[3px] border border-ink/30 bg-paper p-0 shadow-[0_30px_60px_-30px_rgba(46,42,38,0.6)] sm:max-w-xl"
+                onEscapeKeyDown={(event) => {
+                    if (categoryPanelIsOpen()) {
+                        event.preventDefault();
+                    }
+                }}
+            >
                 <div className="kraft flex items-center gap-3 px-5 py-3.5">
                     <Sparkle className="size-4 text-ink" aria-hidden="true" />
                     <div className="min-w-0">

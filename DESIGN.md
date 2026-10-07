@@ -266,12 +266,13 @@ Borders are hairlines. Content dividers are dotted; section boundaries are solid
 - **Do** give any masked (ticket-notched) element its shadow on an unmasked wrapper.
 - **Do** carry exactly one authored motion moment per surface and guard it with `prefers-reduced-motion`.
 - **Do** keep contrast: Dill `#5C7F4A` is for large text and fills only (4.2:1 on Mist); use Dill Deep `#3F5A33` for links and small text (7.0:1).
+- **Do** give every data surface a component-aware skeleton (cold-load blade skeleton, in-list skeletons on same-path visits) instead of a full-screen spinner, and every form field `aria-invalid` + a `role="alert"` message with the ruby border on failure.
 
 ### Don't:
 
 - **Don't** introduce a dark theme in v1 — `.dark` tokens exist but the class is never applied from a system preference.
 - **Don't** use gradients as text, as decoration, or as a section ground. Gradients exist only inside SVG glass and on the wood/kraft/paper grain textures.
-- **Don't** use coral `#F26882` or ruby `#B21E4B` as text on a light ground.
+- **Don't** use coral `#F26882` as text on a light ground (it fails contrast); ruby `#B21E4B` text is reserved for destructive actions and validation errors — never body copy.
 - **Don't** add a pill radius anywhere; the world stops at `6px` except for dots.
 - **Don't** use hard-offset shadows, neobrutalist outlines, embossing or bevels that imitate a material the page does not render.
 - **Don't** put an eyebrow or kicker line above a heading — the sprig flourish is the ornament.

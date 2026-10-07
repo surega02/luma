@@ -1,17 +1,10 @@
 import { Link, usePage } from '@inertiajs/react';
-import {
-    BookOpen,
-    Folder,
-    LayoutGrid,
-    Library,
-    Menu,
-    Search,
-    Sparkle,
-} from 'lucide-react';
+import { BookOpen, Folder, Menu, Search, Sparkle } from 'lucide-react';
 import AppLogo from '@/components/app-logo';
 import AppLogoIcon from '@/components/app-logo-icon';
 import { Breadcrumbs } from '@/components/breadcrumbs';
 import { useQuickCapture } from '@/components/knowledge/quick-capture-provider';
+import { mainNavItems } from '@/components/nav-items';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
 import {
@@ -42,25 +35,11 @@ import { useCurrentUrl } from '@/hooks/use-current-url';
 import { useInitials } from '@/hooks/use-initials';
 import { cn, toUrl } from '@/lib/utils';
 import { dashboard } from '@/routes';
-import { index as knowledgeIndex } from '@/routes/knowledge';
 import type { BreadcrumbItem, NavItem } from '@/types';
 
 type Props = {
     breadcrumbs?: BreadcrumbItem[];
 };
-
-const mainNavItems: NavItem[] = [
-    {
-        title: 'Dashboard',
-        href: dashboard(),
-        icon: LayoutGrid,
-    },
-    {
-        title: 'Knowledge',
-        href: knowledgeIndex(),
-        icon: Library,
-    },
-];
 
 const rightNavItems: NavItem[] = [
     {
@@ -82,7 +61,11 @@ export function AppHeader({ breadcrumbs = [] }: Props) {
     const page = usePage();
     const { auth } = page.props;
     const getInitials = useInitials();
-    const { isCurrentUrl, whenCurrentUrl } = useCurrentUrl();
+    const { isCurrentUrl, isCurrentOrParentUrl } = useCurrentUrl();
+    const active = (item: NavItem) =>
+        item.activePrefix
+            ? isCurrentUrl(item.activePrefix, undefined, true)
+            : isCurrentOrParentUrl(item.href);
     const openQuickCapture = useQuickCapture();
 
     return (
@@ -171,10 +154,8 @@ export function AppHeader({ breadcrumbs = [] }: Props) {
                                             href={item.href}
                                             className={cn(
                                                 navigationMenuTriggerStyle(),
-                                                whenCurrentUrl(
-                                                    item.href,
+                                                active(item) &&
                                                     activeItemStyles,
-                                                ),
                                                 'h-9 cursor-pointer px-3',
                                             )}
                                         >
@@ -183,7 +164,7 @@ export function AppHeader({ breadcrumbs = [] }: Props) {
                                             )}
                                             {item.title}
                                         </Link>
-                                        {isCurrentUrl(item.href) && (
+                                        {active(item) && (
                                             <div className="absolute bottom-0 left-0 h-0.5 w-full translate-y-px bg-black dark:bg-white"></div>
                                         )}
                                     </NavigationMenuItem>

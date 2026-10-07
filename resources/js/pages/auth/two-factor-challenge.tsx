@@ -65,13 +65,25 @@ export default function TwoFactorChallenge() {
                             {showRecoveryInput ? (
                                 <>
                                     <Input
+                                        id="recovery-code"
                                         name="recovery_code"
                                         type="text"
                                         placeholder="Enter recovery code"
                                         autoFocus={showRecoveryInput}
                                         required
+                                        aria-invalid={
+                                            errors.recovery_code
+                                                ? true
+                                                : undefined
+                                        }
+                                        aria-describedby={
+                                            errors.recovery_code
+                                                ? 'recovery-code-error'
+                                                : undefined
+                                        }
                                     />
                                     <InputError
+                                        id="recovery-code-error"
                                         message={errors.recovery_code}
                                     />
                                 </>
@@ -100,7 +112,10 @@ export default function TwoFactorChallenge() {
                                             </InputOTPGroup>
                                         </InputOTP>
                                     </div>
-                                    <InputError message={errors.code} />
+                                    <InputError
+                                        id="code-error"
+                                        message={errors.code}
+                                    />
                                 </div>
                             )}
 

@@ -46,6 +46,7 @@
              FIRST VIEWPORT: label-plate nav; left, Learn. Capture. Grow. in script over the supporting copy with a solid dill Get Started block; right, a three-vessel shelf where one band flips to Definition / My Understanding / Insight.
              FORM: The Brine Calendar, challenger 3 of the dealt hand (seed 674610b6).
              FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance -->
+        <x-boot-skeleton :component="$page['component']" />
         <x-inertia::app />
     </body>
 </html>

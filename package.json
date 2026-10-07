@@ -8,7 +8,8 @@
         "dev": "vp dev",
         "check": "vp check",
         "check:fix": "vp check --fix",
-        "types:check": "tsc --noEmit"
+        "types:check": "tsc --noEmit",
+        "test:e2e": "node e2e/run.js"
     },
     "dependencies": {
         "@inertiajs/react": "^3.0.0",
@@ -56,6 +57,7 @@
         "@rolldown/plugin-babel": "^0.2.3",
         "@types/node": "^22.13.5",
         "babel-plugin-react-compiler": "^1.0.0",
+        "puppeteer-core": "^25.12.0",
         "vite-plus": "0.3.0"
     },
     "optionalDependencies": {

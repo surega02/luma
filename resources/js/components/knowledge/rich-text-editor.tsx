@@ -2,7 +2,7 @@ import { Placeholder } from '@tiptap/extension-placeholder';
 import { EditorContent, useEditor } from '@tiptap/react';
 import { StarterKit } from '@tiptap/starter-kit';
 import { Bold, Italic, Link2, List, ListOrdered, Unlink } from 'lucide-react';
-import { useState, type KeyboardEvent, type ReactNode } from 'react';
+import { useEffect, useState, type KeyboardEvent, type ReactNode } from 'react';
 import InputError from '@/components/input-error';
 import { cn } from '@/lib/utils';
 import { labelStamp } from './stamp';
@@ -68,6 +68,18 @@ export default function RichTextEditor({
         },
         [],
     );
+
+    // The form can change the draft without a keystroke (closing Quick
+    // Capture, discarding an edit), so follow the controlled value.
+    useEffect(() => {
+        if (!editor || editor.isDestroyed) {
+            return;
+        }
+
+        if (value !== editor.getHTML()) {
+            editor.commands.setContent(value ?? '', { emitUpdate: false });
+        }
+    }, [editor, value]);
 
     const openLinkEditor = () => {
         if (!editor) {
@@ -147,6 +159,8 @@ export default function RichTextEditor({
             </label>
 
             <div
+                aria-invalid={error ? true : undefined}
+                aria-describedby={error ? `${id}-error` : undefined}
                 className={cn(
                     'rt-editor rounded-[3px] border bg-paper transition-colors',
                     error
@@ -245,7 +259,7 @@ export default function RichTextEditor({
                 <EditorContent editor={editor} />
             </div>
 
-            <InputError message={error} className="mt-0.5" />
+            <InputError id={`${id}-error`} message={error} className="mt-0.5" />
         </div>
     );
 }

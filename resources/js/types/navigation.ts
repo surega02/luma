@@ -11,4 +11,6 @@ export type NavItem = {
     href: NonNullable<InertiaLinkProps['href']>;
     icon?: LucideIcon | null;
     isActive?: boolean;
+    /** Highlight this item when the current URL starts with the prefix. */
+    activePrefix?: string;
 };

@@ -1,5 +1,13 @@
 import { Head, Link, router, useForm, usePage } from '@inertiajs/react';
-import { ArrowLeft, ExternalLink, Loader2, Pencil, Trash2 } from 'lucide-react';
+import {
+    ArrowLeft,
+    ExternalLink,
+    History,
+    Loader2,
+    Pencil,
+    Plus,
+    Trash2,
+} from 'lucide-react';
 import {
     useEffect,
     useRef,
@@ -12,25 +20,39 @@ import KnowledgeFields, {
     type KnowledgeDraft,
 } from '@/components/knowledge/knowledge-fields';
 import RichText from '@/components/knowledge/rich-text';
+import RichTextEditor from '@/components/knowledge/rich-text-editor';
 import StatusBadge from '@/components/knowledge/status-badge';
 import {
     buttonDanger,
     buttonPrimary,
+    buttonQuiet,
     buttonSecondary,
     formatRecordDate,
     labelStamp,
 } from '@/components/knowledge/stamp';
 import {
+    definitionHistory,
     destroy as destroyKnowledge,
     index as knowledgeIndex,
+    understandingHistory,
     update as updateKnowledge,
 } from '@/routes/knowledge';
-import type { KnowledgeDetail } from '@/types';
+import { store as storeInsight } from '@/routes/knowledge/insights';
+import {
+    destroy as destroyInsight,
+    update as updateInsight,
+} from '@/routes/insights';
+import type { KnowledgeDetail, KnowledgeInsight } from '@/types';
 
 type PageProps = {
     knowledge: KnowledgeDetail;
     edit?: string;
 };
+
+const iconQuiet =
+    'inline-flex size-7 shrink-0 items-center justify-center rounded-[2px] text-ink-soft transition-colors duration-150 hover:bg-ink/5 hover:text-ink';
+const iconDanger =
+    'inline-flex size-7 shrink-0 items-center justify-center rounded-[2px] text-ink-soft transition-colors duration-150 hover:bg-ruby/10 hover:text-ruby';
 
 export default function KnowledgeShow() {
     const { knowledge, edit } = usePage<PageProps>().props;
@@ -128,6 +150,51 @@ export default function KnowledgeShow() {
         if (target) {
             router.visit(target);
         }
+    };
+
+    // Insight composer (PRD 23): add, edit inline, delete with no confirm.
+    const [insightEditor, setInsightEditor] = useState<{
+        id: number | null;
+    } | null>(null);
+    const insightForm = useForm<{ content: string }>({ content: '' });
+
+    const openAddInsight = () => {
+        insightForm.reset();
+        insightForm.clearErrors();
+        setInsightEditor({ id: null });
+    };
+
+    const openEditInsight = (insight: KnowledgeInsight) => {
+        insightForm.setData('content', insight.content);
+        insightForm.clearErrors();
+        setInsightEditor({ id: insight.id });
+    };
+
+    const cancelInsight = () => {
+        insightForm.reset();
+        insightForm.clearErrors();
+        setInsightEditor(null);
+    };
+
+    const saveInsight = (event: FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+
+        const editingId = insightEditor?.id ?? null;
+        const options = {
+            preserveScroll: true,
+            onSuccess: () => {
+                insightForm.reset();
+                insightForm.clearErrors();
+                setInsightEditor(null);
+            },
+        };
+
+        if (editingId !== null) {
+            insightForm.patch(updateInsight.url(editingId), options);
+            return;
+        }
+
+        insightForm.post(storeInsight.url(knowledge.id), options);
     };
 
     const sourceUrl = knowledge.url?.trim() ?? '';
@@ -243,14 +310,44 @@ export default function KnowledgeShow() {
                             </div>
                         </header>
 
-                        <Section title="Definition">
+                        <Section
+                            title="Definition"
+                            action={
+                                <Link
+                                    href={definitionHistory.url(knowledge.id)}
+                                    className={buttonQuiet}
+                                >
+                                    <History
+                                        className="size-3.5"
+                                        aria-hidden="true"
+                                    />
+                                    History
+                                </Link>
+                            }
+                        >
                             <RichText
                                 html={knowledge.definition}
                                 className="text-ink"
                             />
                         </Section>
 
-                        <Section title="My Understanding">
+                        <Section
+                            title="My Understanding"
+                            action={
+                                <Link
+                                    href={understandingHistory.url(
+                                        knowledge.id,
+                                    )}
+                                    className={buttonQuiet}
+                                >
+                                    <History
+                                        className="size-3.5"
+                                        aria-hidden="true"
+                                    />
+                                    History
+                                </Link>
+                            }
+                        >
                             {knowledge.my_understanding ? (
                                 <RichText
                                     html={knowledge.my_understanding}
@@ -263,8 +360,72 @@ export default function KnowledgeShow() {
                             )}
                         </Section>
 
-                        <Section title="Insights">
-                            {knowledge.insights.length === 0 ? (
+                        <Section
+                            title="Insights"
+                            action={
+                                insightEditor === null ? (
+                                    <button
+                                        type="button"
+                                        onClick={openAddInsight}
+                                        className={buttonSecondary}
+                                    >
+                                        <Plus
+                                            className="size-3.5"
+                                            aria-hidden="true"
+                                        />
+                                        Add Insight
+                                    </button>
+                                ) : undefined
+                            }
+                        >
+                            {insightEditor !== null ? (
+                                <form
+                                    onSubmit={saveInsight}
+                                    noValidate
+                                    className="flex flex-col gap-3 rounded-[3px] border border-rule bg-mist px-3.5 py-3"
+                                >
+                                    <RichTextEditor
+                                        id="insight-content"
+                                        label={
+                                            insightEditor.id !== null
+                                                ? 'Edit insight'
+                                                : 'New insight'
+                                        }
+                                        value={insightForm.data.content}
+                                        onChange={(html) =>
+                                            insightForm.setData('content', html)
+                                        }
+                                        error={insightForm.errors.content}
+                                        placeholder="What clicked — or what are you still unsure about?"
+                                    />
+
+                                    <div className="flex items-center justify-end gap-2">
+                                        <button
+                                            type="button"
+                                            onClick={cancelInsight}
+                                            disabled={insightForm.processing}
+                                            className={buttonSecondary}
+                                        >
+                                            Cancel
+                                        </button>
+                                        <button
+                                            type="submit"
+                                            disabled={insightForm.processing}
+                                            className={buttonPrimary}
+                                        >
+                                            {insightForm.processing && (
+                                                <Loader2
+                                                    className="size-3.5 animate-spin"
+                                                    aria-hidden="true"
+                                                />
+                                            )}
+                                            {insightEditor.id !== null
+                                                ? 'Save Insight'
+                                                : 'Add Insight'}
+                                        </button>
+                                    </div>
+                                </form>
+                            ) : knowledge.insights.length === 0 ? (
                                 <p className="text-[16px] text-ink-soft">
                                     No insights yet.
                                 </p>
@@ -273,9 +434,48 @@ export default function KnowledgeShow() {
                                     {knowledge.insights.map((insight) => (
                                         <li
                                             key={insight.id}
-                                            className="rounded-[3px] border border-rule bg-mist px-3.5 py-2.5 text-[16px] leading-relaxed text-ink"
+                                            className="flex items-start justify-between gap-3 rounded-[3px] border border-rule bg-mist px-3.5 py-2.5"
                                         >
-                                            {insight.content}
+                                            <RichText
+                                                html={insight.content}
+                                                className="min-w-0 flex-1 text-ink"
+                                            />
+
+                                            <div className="flex items-center gap-1">
+                                                <button
+                                                    type="button"
+                                                    aria-label="Edit insight"
+                                                    onClick={() =>
+                                                        openEditInsight(insight)
+                                                    }
+                                                    className={iconQuiet}
+                                                >
+                                                    <Pencil
+                                                        className="size-3.5"
+                                                        aria-hidden="true"
+                                                    />
+                                                </button>
+                                                <button
+                                                    type="button"
+                                                    aria-label="Delete insight"
+                                                    onClick={() =>
+                                                        router.delete(
+                                                            destroyInsight.url(
+                                                                insight.id,
+                                                            ),
+                                                            {
+                                                                preserveScroll: true,
+                                                            },
+                                                        )
+                                                    }
+                                                    className={iconDanger}
+                                                >
+                                                    <Trash2
+                                                        className="size-3.5"
+                                                        aria-hidden="true"
+                                                    />
+                                                </button>
+                                            </div>
                                         </li>
                                     ))}
                                 </ul>
@@ -372,10 +572,21 @@ export default function KnowledgeShow() {
     );
 }
 
-function Section({ title, children }: { title: string; children: ReactNode }) {
+function Section({
+    title,
+    action,
+    children,
+}: {
+    title: string;
+    action?: ReactNode;
+    children: ReactNode;
+}) {
     return (
         <section className="flex flex-col gap-2.5">
-            <h2 className={labelStamp}>{title}</h2>
+            <div className="flex flex-wrap items-center justify-between gap-2">
+                <h2 className={labelStamp}>{title}</h2>
+                {action}
+            </div>
             <div>{children}</div>
             <div className="rule-dotted mt-1" aria-hidden="true" />
         </section>

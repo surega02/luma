@@ -3,7 +3,7 @@ import InputError from '@/components/input-error';
 import { Label } from '@/components/ui/label';
 import CategorySelector from './category-selector';
 import RichTextEditor from './rich-text-editor';
-import { inputField, labelStamp } from './stamp';
+import { inputClasses, labelStamp } from './stamp';
 
 export type KnowledgeDraft = {
     title: string;
@@ -42,9 +42,17 @@ export default function KnowledgeFields({
                     value={data.title}
                     placeholder="How to bake sourdough"
                     onChange={(event) => patch({ title: event.target.value })}
-                    className={inputField}
+                    aria-invalid={errors.title ? true : undefined}
+                    aria-describedby={
+                        errors.title ? 'knowledge-title-error' : undefined
+                    }
+                    className={inputClasses(errors.title)}
                 />
-                <InputError message={errors.title} className="mt-0.5" />
+                <InputError
+                    id="knowledge-title-error"
+                    message={errors.title}
+                    className="mt-0.5"
+                />
             </div>
 
             <RichTextEditor
@@ -83,10 +91,20 @@ export default function KnowledgeFields({
                             onChange={(event) =>
                                 patch({ source: event.target.value })
                             }
-                            className={`${inputField} pl-9`}
+                            aria-invalid={errors.source ? true : undefined}
+                            aria-describedby={
+                                errors.source
+                                    ? 'knowledge-source-error'
+                                    : undefined
+                            }
+                            className={inputClasses(errors.source, 'pl-9')}
                         />
                     </div>
-                    <InputError message={errors.source} className="mt-0.5" />
+                    <InputError
+                        id="knowledge-source-error"
+                        message={errors.source}
+                        className="mt-0.5"
+                    />
                 </div>
 
                 <div className="grid gap-1.5">
@@ -106,10 +124,18 @@ export default function KnowledgeFields({
                             onChange={(event) =>
                                 patch({ url: event.target.value })
                             }
-                            className={`${inputField} pl-9`}
+                            aria-invalid={errors.url ? true : undefined}
+                            aria-describedby={
+                                errors.url ? 'knowledge-url-error' : undefined
+                            }
+                            className={inputClasses(errors.url, 'pl-9')}
                         />
                     </div>
-                    <InputError message={errors.url} className="mt-0.5" />
+                    <InputError
+                        id="knowledge-url-error"
+                        message={errors.url}
+                        className="mt-0.5"
+                    />
                 </div>
             </div>
 

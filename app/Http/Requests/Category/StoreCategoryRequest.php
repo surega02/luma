@@ -31,7 +31,7 @@ class StoreCategoryRequest extends FormRequest
                 Rule::unique('categories', 'name')->where('user_id', $this->user()?->id),
             ],
             'color' => ['required', 'string', 'max:32'],
-            'icon' => ['required', 'string', 'max:64'],
+            'icon' => ['required', 'string', 'max:50'],
         ];
     }
 }

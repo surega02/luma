@@ -18,8 +18,20 @@ export const buttonDanger = `${buttonBase} border border-ruby/45 text-ruby hover
 
 export const labelStamp = 'stamp text-[11px] tracking-[0.14em] text-ink-soft';
 
-export const inputField =
-    'h-10 w-full rounded-[3px] border border-input bg-paper px-3 text-[16px] text-ink placeholder:text-ink-soft focus-visible:border-dill-deep focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-dill/40';
+const inputBase =
+    'h-10 w-full rounded-[3px] border bg-paper px-3 text-[16px] text-ink placeholder:text-ink-soft focus-visible:outline-hidden focus-visible:ring-2';
+
+export const inputField = `${inputBase} border-input focus-visible:border-dill-deep focus-visible:ring-dill/40`;
+
+export const inputFieldInvalid = `${inputBase} border-ruby focus-visible:border-ruby focus-visible:ring-ruby/30`;
+
+/**
+ * The field gets its error treatment only while the server is holding a
+ * message for it, so the ruby border never shows on a healthy form (E10-F04).
+ */
+export function inputClasses(error?: string, extra?: string): string {
+    return `${error ? inputFieldInvalid : inputField}${extra ? ` ${extra}` : ''}`;
+}
 
 export const cardSurface = 'rounded-[3px] border border-rule bg-paper';
 

@@ -151,7 +151,9 @@ class UpdateKnowledgeTest extends TestCase
                 ->component('knowledge/show')
                 ->where('knowledge.id', $knowledge->id)
                 ->where('knowledge.status', 'understood')
-                ->has('knowledge.definition_versions', 0));
+                ->has('knowledge.insights', 0)
+                ->missing('knowledge.definition_versions')
+                ->missing('knowledge.understanding_versions'));
 
         $this->actingAs($other)
             ->get(route('knowledge.show', $knowledge))

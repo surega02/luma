@@ -71,9 +71,22 @@ export default function Security(props: Props) {
                                     className="mt-1 block w-full"
                                     autoComplete="current-password"
                                     placeholder="Current password"
+                                    aria-invalid={
+                                        errors.current_password
+                                            ? true
+                                            : undefined
+                                    }
+                                    aria-describedby={
+                                        errors.current_password
+                                            ? 'current-password-error'
+                                            : undefined
+                                    }
                                 />
 
-                                <InputError message={errors.current_password} />
+                                <InputError
+                                    id="current-password-error"
+                                    message={errors.current_password}
+                                />
                             </div>
 
                             <div className="grid gap-2">
@@ -87,9 +100,20 @@ export default function Security(props: Props) {
                                     autoComplete="new-password"
                                     placeholder="New password"
                                     passwordrules={props.passwordRules}
+                                    aria-invalid={
+                                        errors.password ? true : undefined
+                                    }
+                                    aria-describedby={
+                                        errors.password
+                                            ? 'password-error'
+                                            : undefined
+                                    }
                                 />
 
-                                <InputError message={errors.password} />
+                                <InputError
+                                    id="password-error"
+                                    message={errors.password}
+                                />
                             </div>
 
                             <div className="grid gap-2">
@@ -104,9 +128,20 @@ export default function Security(props: Props) {
                                     autoComplete="new-password"
                                     placeholder="Confirm password"
                                     passwordrules={props.passwordRules}
+                                    aria-invalid={
+                                        errors.password_confirmation
+                                            ? true
+                                            : undefined
+                                    }
+                                    aria-describedby={
+                                        errors.password_confirmation
+                                            ? 'password-confirmation-error'
+                                            : undefined
+                                    }
                                 />
 
                                 <InputError
+                                    id="password-confirmation-error"
                                     message={errors.password_confirmation}
                                 />
                             </div>

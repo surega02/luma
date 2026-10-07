@@ -43,7 +43,7 @@ class DeleteKnowledgeTest extends TestCase
             ->assertOk()
             ->assertInertia(fn (Assert $page) => $page
                 ->component('knowledge/index')
-                ->has('knowledge.data', 0));
+                ->has('knowledges.data', 0));
     }
 
     public function test_another_user_cannot_delete_knowledge(): void

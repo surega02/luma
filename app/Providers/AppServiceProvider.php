@@ -7,6 +7,7 @@ use Carbon\CarbonImmutable;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Validation\Rules\Password;
 use Laravel\Fortify\Actions\AttemptToAuthenticate;
@@ -46,6 +47,12 @@ class AppServiceProvider extends ServiceProvider
         DB::prohibitDestructiveCommands(
             app()->isProduction(),
         );
+
+        // HTTPS everywhere in production (E12-F09): generated URLs must never
+        // downgrade to http, no matter what APP_URL was set to.
+        if (app()->isProduction()) {
+            URL::forceScheme('https');
+        }
 
         // PRD 7.1: minimum 8 characters everywhere; production hardens further.
         Password::defaults(fn (): Password => app()->isProduction()

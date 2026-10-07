@@ -1,24 +1,40 @@
 import { Head, Link, router, usePage } from '@inertiajs/react';
-import { ChevronLeft, ChevronRight, Plus } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Plus, SearchX } from 'lucide-react';
 import { useState, type ReactNode } from 'react';
+import KnowledgeListSkeleton from '@/components/loading/knowledge-list-skeleton';
 import ConfirmDialog from '@/components/knowledge/confirm-dialog';
 import KnowledgeCard from '@/components/knowledge/knowledge-card';
-import { buttonPrimary, labelStamp } from '@/components/knowledge/stamp';
+import ListToolbar from '@/components/knowledge/list-toolbar';
 import { useQuickCapture } from '@/components/knowledge/quick-capture-provider';
+import { buttonPrimary, labelStamp } from '@/components/knowledge/stamp';
+import { usePagePending } from '@/hooks/use-page-pending';
 import {
     destroy as destroyKnowledge,
     index as knowledgeIndex,
 } from '@/routes/knowledge';
-import type { KnowledgeListItem, Paginated } from '@/types';
+import type {
+    Category,
+    KnowledgeFilters,
+    KnowledgeListItem,
+    Paginated,
+} from '@/types';
 
 export default function KnowledgeIndex() {
-    const { knowledge } = usePage<{
-        knowledge: Paginated<KnowledgeListItem>;
+    const { knowledges, filters, categories } = usePage<{
+        knowledges: Paginated<KnowledgeListItem>;
+        filters: KnowledgeFilters;
+        categories: Category[];
     }>().props;
     const openQuickCapture = useQuickCapture();
     const [pendingDelete, setPendingDelete] = useState<number | null>(null);
+    const refreshing = usePagePending();
 
-    const pending = knowledge.data.find((item) => item.id === pendingDelete);
+    const pending = knowledges.data.find((item) => item.id === pendingDelete);
+    const hasFilters =
+        filters.search !== '' ||
+        filters.category_ids.length > 0 ||
+        filters.include_uncategorized;
+    const showToolbar = knowledges.total > 0 || hasFilters;
 
     return (
         <>
@@ -32,35 +48,66 @@ export default function KnowledgeIndex() {
                             Knowledge
                         </h1>
                         <p className="text-[16px] text-ink-soft">
-                            {knowledge.total}{' '}
-                            {knowledge.total === 1 ? 'record' : 'records'}{' '}
-                            captured
+                            {hasFilters
+                                ? `${knowledges.total} ${knowledges.total === 1 ? 'record matches' : 'records match'} your filters`
+                                : `${knowledges.total} ${knowledges.total === 1 ? 'record' : 'records'} captured`}
                         </p>
                     </div>
                 </header>
 
-                {knowledge.data.length === 0 ? (
-                    <div className="kraft flex flex-col items-start gap-3 rounded-[3px] border border-rule px-6 py-10">
-                        <h2 className="font-sans text-[24px] font-semibold text-ink">
-                            Nothing captured yet.
-                        </h2>
-                        <p className="max-w-md text-[16px] leading-relaxed text-ink/85">
-                            Write down what you are learning. Capture the
-                            definition first — the rest can wait until you are
-                            ready.
-                        </p>
-                        <button
-                            type="button"
-                            onClick={openQuickCapture}
-                            className={buttonPrimary}
-                        >
-                            <Plus className="size-3.5" aria-hidden="true" />
-                            Quick Capture
-                        </button>
-                    </div>
+                {showToolbar && (
+                    <ListToolbar filters={filters} categories={categories} />
+                )}
+
+                {refreshing ? (
+                    <KnowledgeListSkeleton />
+                ) : knowledges.data.length === 0 ? (
+                    hasFilters ? (
+                        <div className="flex flex-col items-start gap-3 rounded-[3px] border border-dashed border-rule px-6 py-10">
+                            <SearchX
+                                className="size-6 text-ink-soft"
+                                aria-hidden="true"
+                            />
+                            <h2 className="font-sans text-[24px] font-semibold text-ink">
+                                No knowledge matches.
+                            </h2>
+                            <p className="max-w-md text-[16px] leading-relaxed text-ink/85">
+                                Nothing here answers that yet. Try a shorter
+                                search, fewer categories, or capture what you
+                                are learning now.
+                            </p>
+                            <button
+                                type="button"
+                                onClick={openQuickCapture}
+                                className={buttonPrimary}
+                            >
+                                <Plus className="size-3.5" aria-hidden="true" />
+                                Quick Capture
+                            </button>
+                        </div>
+                    ) : (
+                        <div className="kraft flex flex-col items-start gap-3 rounded-[3px] border border-rule px-6 py-10">
+                            <h2 className="font-sans text-[24px] font-semibold text-ink">
+                                Nothing captured yet.
+                            </h2>
+                            <p className="max-w-md text-[16px] leading-relaxed text-ink/85">
+                                Write down what you are learning. Capture the
+                                definition first — the rest can wait until you
+                                are ready.
+                            </p>
+                            <button
+                                type="button"
+                                onClick={openQuickCapture}
+                                className={buttonPrimary}
+                            >
+                                <Plus className="size-3.5" aria-hidden="true" />
+                                Quick Capture
+                            </button>
+                        </div>
+                    )
                 ) : (
                     <div className="grid gap-4 lg:grid-cols-2">
-                        {knowledge.data.map((item) => (
+                        {knowledges.data.map((item) => (
                             <KnowledgeCard
                                 key={item.id}
                                 knowledge={item}
@@ -70,9 +117,9 @@ export default function KnowledgeIndex() {
                     </div>
                 )}
 
-                {knowledge.last_page > 1 && (
+                {knowledges.last_page > 1 && (
                     <nav className="flex items-center justify-between border-t border-rule pt-4">
-                        <PageLink href={knowledge.prev_page_url} rel="prev">
+                        <PageLink href={knowledges.prev_page_url} rel="prev">
                             <ChevronLeft
                                 className="size-3.5"
                                 aria-hidden="true"
@@ -81,11 +128,11 @@ export default function KnowledgeIndex() {
                         </PageLink>
 
                         <span className="stamp text-[11px] tracking-[0.14em] text-ink-soft">
-                            Page {knowledge.current_page} of{' '}
-                            {knowledge.last_page}
+                            Page {knowledges.current_page} of{' '}
+                            {knowledges.last_page}
                         </span>
 
-                        <PageLink href={knowledge.next_page_url} rel="next">
+                        <PageLink href={knowledges.next_page_url} rel="next">
                             Next
                             <ChevronRight
                                 className="size-3.5"

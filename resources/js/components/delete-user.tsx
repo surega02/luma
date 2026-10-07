@@ -79,9 +79,22 @@ export default function DeleteUser() {
                                             ref={passwordInput}
                                             placeholder="Password"
                                             autoComplete="current-password"
+                                            aria-invalid={
+                                                errors.password
+                                                    ? true
+                                                    : undefined
+                                            }
+                                            aria-describedby={
+                                                errors.password
+                                                    ? 'delete-password-error'
+                                                    : undefined
+                                            }
                                         />
 
-                                        <InputError message={errors.password} />
+                                        <InputError
+                                            id="delete-password-error"
+                                            message={errors.password}
+                                        />
                                     </div>
 
                                     <DialogFooter className="gap-2">
