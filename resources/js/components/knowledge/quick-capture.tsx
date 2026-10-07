@@ -1,6 +1,6 @@
 import { useForm } from '@inertiajs/react';
 import { Loader2, Sparkle } from 'lucide-react';
-import { useEffect, type FormEvent } from 'react';
+import { lazy, Suspense, useEffect, type FormEvent } from 'react';
 import {
     Dialog,
     DialogContent,
@@ -9,9 +9,35 @@ import {
     DialogTitle,
 } from '@/components/ui/dialog';
 import { store as storeKnowledge } from '@/routes/knowledge';
-import KnowledgeFields, { type KnowledgeDraft } from './knowledge-fields';
+import type { KnowledgeDraft } from './knowledge-fields';
 import { categoryPanelIsOpen } from './category-selector';
 import { buttonPrimary, buttonSecondary } from './stamp';
+
+/**
+ * The field stack pulls in the whole Tiptap editor (≈400 kB). Nothing else on
+ * the shell needs it, so it arrives on demand while the dialog shows a
+ * form-shaped skeleton rather than a blank panel.
+ */
+const KnowledgeFields = lazy(() => import('./knowledge-fields'));
+
+function FieldsFallback() {
+    return (
+        <div className="grid gap-4" aria-hidden="true">
+            {[60, 100, 100, 45].map((width, index) => (
+                <div
+                    key={`field-skeleton-${index + 1}`}
+                    className="grid gap-1.5"
+                >
+                    <div className="h-3 w-20 rounded-[2px] bg-muted" />
+                    <div
+                        className={`rounded-[3px] bg-muted ${index === 1 || index === 2 ? 'h-24' : 'h-10'}`}
+                        style={{ width: `${width}%` }}
+                    />
+                </div>
+            ))}
+        </div>
+    );
+}
 
 const EMPTY: KnowledgeDraft = {
     title: '',
@@ -85,11 +111,13 @@ export default function QuickCapture({
 
                 <form onSubmit={submit} noValidate>
                     <div className="max-h-[65vh] overflow-y-auto px-5 py-5">
-                        <KnowledgeFields
-                            data={data}
-                            setData={(next) => setData(next)}
-                            errors={errors}
-                        />
+                        <Suspense fallback={<FieldsFallback />}>
+                            <KnowledgeFields
+                                data={data}
+                                setData={(next) => setData(next)}
+                                errors={errors}
+                            />
+                        </Suspense>
                     </div>
 
                     <DialogFooter className="gap-2 border-t border-rule bg-mist px-5 py-4 sm:justify-end">

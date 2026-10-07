@@ -171,7 +171,7 @@ export default function ListToolbar({
                             type="search"
                             value={search}
                             aria-label="Search knowledge"
-                            placeholder="Search title, definition, understanding, insight"
+                            placeholder="Search title, definition, understanding"
                             onFocus={() => {
                                 focused.current = true;
                             }}

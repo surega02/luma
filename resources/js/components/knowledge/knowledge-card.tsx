@@ -7,7 +7,7 @@ import StatusBadge from './status-badge';
 import { cardSurface, formatRecordDate } from './stamp';
 
 const actionClass =
-    'stamp inline-flex items-center gap-1 rounded-[2px] px-2 py-1 text-[11px] tracking-[0.14em] transition-colors duration-150';
+    'stamp inline-flex min-h-6 items-center gap-1 rounded-[2px] px-2 py-1 text-[11px] tracking-[0.14em] transition-colors duration-150';
 
 /**
  * The Knowledge list record card: title, definition snippet, categories,

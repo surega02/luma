@@ -41,6 +41,12 @@ typography:
         fontWeight: 400
         lineHeight: 1.62
         letterSpacing: 'normal'
+    record-title:
+        fontFamily: 'Bitter, ui-serif, Georgia, serif'
+        fontSize: '24px'
+        fontWeight: 600
+        lineHeight: 1.375
+        letterSpacing: 'normal'
     label:
         fontFamily: 'Oswald, Arial Narrow, sans-serif'
         fontSize: '11px'
@@ -61,13 +67,13 @@ spacing:
 components:
     button-primary:
         backgroundColor: '{colors.dill}'
-        textColor: '#FBFAF5'
+        textColor: '#FFFFFF'
         rounded: '{rounded.sm}'
         padding: '12px 24px'
         typography: '{typography.label}'
     button-primary-hover:
         backgroundColor: '{colors.dill-deep}'
-        textColor: '#FBFAF5'
+        textColor: '#FFFFFF'
         rounded: '{rounded.sm}'
         padding: '12px 24px'
         typography: '{typography.label}'
@@ -98,7 +104,7 @@ components:
         backgroundColor: '{colors.paper}'
         textColor: '{colors.ink-soft}'
         rounded: '{rounded.sm}'
-        padding: '20px'
+        padding: '16px'
 ---
 
 # Design System: Luma
@@ -133,8 +139,8 @@ The palette is a pantry shelf: paper and kraft carry the surface, one green does
 
 ### Secondary
 
-- **Label Coral** (`#F26882`): a category ink. Appears as the 3–4px stripe on a kraft label and as the colour bar over a record card. Never as text on a light ground.
-- **Archive Ruby** (`#B21E4B`): a category ink and the destructive/destructive-foreground token. Same rules as coral.
+- **Label Coral** (`#F26882`): a category ink. Appears as the 3–4px stripe on a kraft label and as the dot in a record card's category chip. Never as text on a light ground.
+- **Archive Ruby** (`#B21E4B`): a category ink, the destructive fill, and the one red permitted as text — destructive labels and validation errors, never body copy.
 
 ### Tertiary
 
@@ -152,13 +158,21 @@ The palette is a pantry shelf: paper and kraft carry the surface, one green does
 - **Input** (`#CFC8B8`): field borders only.
 - **Selection** (`#D9E2CC`): text selection background, always with Ink type.
 
+### Chrome
+
+App-chrome fills, one step off the Mist ladder. They belong to the navigation rail and quiet secondary surfaces — never to a content surface, never to type.
+
+- **Sidebar** (`#F2EFE5`): the rail's ground, Mist one step deeper.
+- **Muted** (`#EDEAE0`): quiet fills behind chips, avatars, code blocks and active nav rows.
+- **Sidebar Accent** (`#E6E1D3`): the rail's hover and active fill, and nothing else.
+
 ### Named Rules
 
 **The Mist Ground Rule.** The page is `#F7F5EE`. White is never the page; `#FCFAF3` is only ever a surface raised _on_ the page. If a new screen wants to feel empty, it gets more mist, not more white.
 
 **The Rationed Colour Rule.** Dill, coral and ruby mark a real action or a real piece of data — never decoration, never a background wash, never a gradient. A screen with nothing to say should be paper and ink.
 
-**The Kraft Means 'A Record Speaks' Rule.** When the interface shows words a learner wrote (definition, understanding, insight, a record's own label), they sit on kraft stock. Kraft is never used for chrome the product itself owns.
+**The Kraft Means 'A Record Speaks' Rule.** Kraft is where a record announces itself: the vessel label that flips to Definition / My Understanding / Insight, the status chip that reports its stage, the capture and edit bands where its words are written. Where those words are _read_ — the record page — they sit on paper, not kraft: kraft introduces a record, paper sets its text.
 
 ## Typography
 
@@ -175,7 +189,8 @@ All three are self-hosted woff2 in `public/fonts/` with `font-display: swap`; no
 - **Display** (400, `clamp(2.75rem, 7vw, 6rem)`, 1.02): the hero statement "Learn. Capture. Grow." — used once per surface.
 - **Display / Closing** (400, `clamp(2.25rem, 5vw, 4rem)`, 1.08): the closing band's script line. The only other place the script face appears.
 - **Headline** (500, `clamp(1.5rem, 3vw, 2.15rem)`, 1.1, tracking `0.04em`, uppercase): section titles.
-- **Title** (500, `16–17px`, 1.2, tracking `0.05–0.1em`, uppercase): card titles, feature rows, sub-section names.
+- **Title** (500, `16–17px`, 1.2, tracking `0.05–0.1em`, uppercase): feature rows, sub-section names, preview labels.
+- **Record title** (600, `24px`, 1.375, Bitter, sentence case): the `h2` on a record card — the one title set in the reading serif, because a record's name is a sentence, not a label.
 - **Body** (400, `15–17px`, 1.6–1.66): paragraphs, max measure `54–62ch`.
 - **Label** (500, `8–13px`, tracking `0.08–0.2em`, uppercase): buttons, chips, field names, metadata, day counts, statuses.
 
@@ -221,7 +236,7 @@ Borders are hairlines. Content dividers are dotted; section boundaries are solid
 ### Buttons
 
 - **Shape:** `3px` radius, no border on the primary.
-- **Primary:** Dill `#5C7F4A` fill, `#FBFAF5` label, Oswald `13px`, tracking `0.14em`, padding `12px 24px`, trailing arrow icon. Hover → Dill Deep `#3F5A33` over 200ms.
+- **Primary:** Dill `#5C7F4A` fill, `#FFFFFF` label, Oswald `13px`, tracking `0.14em`, padding `12px 24px`, trailing arrow icon. Hover → Dill Deep `#3F5A33` over 200ms.
 - **Secondary:** transparent, `1px` `rgba(46,42,38,0.35)` border, Ink label, same type and padding. Hover → full Ink border plus a 5% Ink wash.
 - **Focus:** `2px solid #3F5A33`, offset `2px`, `2px` radius — global.
 
@@ -236,8 +251,10 @@ Borders are hairlines. Content dividers are dotted; section boundaries are solid
 - **Background:** Paper `#FCFAF3` on a Mist ground — never white on white.
 - **Shadow Strategy:** `.lift` (see Elevation).
 - **Border:** `1px` Rule.
-- **Internal Padding:** `20px`.
-- **Top edge:** a `4px` category bar per category, `3px` gap between bars; an uncategorised record gets a single 20%-Ink bar.
+- **Internal Padding:** `16px`.
+- **Title:** Bitter `24px` semibold, Ink, sentence case, opposite a status stamp — the record's name is a sentence, so it is never stamped caps.
+- **Category treatment:** a `6px` dot in the category ink followed by the name in Oswald `11px` on Mist with a `1px` Rule border. Categories are chips, never a bar across the card's top edge.
+- **Footer:** dotted hairline, then the category chips and the created date (`11px` Ink Soft) on the left, and the three stamped actions — Open / Edit / Delete — on the right, each at a `24px` minimum target.
 
 ### Inputs / Fields
 
@@ -260,17 +277,17 @@ Borders are hairlines. Content dividers are dotted; section boundaries are solid
 ### Do:
 
 - **Do** set every label, button, status, day count and section title in Oswald uppercase with `0.08–0.2em` tracking.
-- **Do** put a record's own words on kraft `#CDAE86` with Ink `#2E2A26` type — and keep micro-caps at `text-ink/85` or darker so they clear 4.5:1.
+- **Do** put a record's words on kraft `#CDAE86` with Ink `#2E2A26` type where they are announced — vessel label, status chip, capture and edit bands — and let them read on paper where they are read; keep micro-caps at `text-ink/85` or darker so they clear 4.5:1.
 - **Do** keep the page ground at `#F7F5EE` and reserve `#FCFAF3` for surfaces raised on it.
 - **Do** use dotted hairlines inside a section and solid hairlines only between sections.
 - **Do** give any masked (ticket-notched) element its shadow on an unmasked wrapper.
 - **Do** carry exactly one authored motion moment per surface and guard it with `prefers-reduced-motion`.
-- **Do** keep contrast: Dill `#5C7F4A` is for large text and fills only (4.2:1 on Mist); use Dill Deep `#3F5A33` for links and small text (7.0:1).
+- **Do** keep contrast: Dill `#5C7F4A` carries white `#FFFFFF` labels (4.6:1) — never an off-white on dill (4.4:1, a fail); use Dill Deep `#3F5A33` for links and small text (7.0:1).
 - **Do** give every data surface a component-aware skeleton (cold-load blade skeleton, in-list skeletons on same-path visits) instead of a full-screen spinner, and every form field `aria-invalid` + a `role="alert"` message with the ruby border on failure.
 
 ### Don't:
 
-- **Don't** introduce a dark theme in v1 — `.dark` tokens exist but the class is never applied from a system preference.
+- **Don't** introduce a dark theme in v1 — light-only is structural, not a convention: the `.dark` token block, the theme cookie, the appearance route and the runtime theme switch were all removed, so no code path can apply one.
 - **Don't** use gradients as text, as decoration, or as a section ground. Gradients exist only inside SVG glass and on the wood/kraft/paper grain textures.
 - **Don't** use coral `#F26882` as text on a light ground (it fails contrast); ruby `#B21E4B` text is reserved for destructive actions and validation errors — never body copy.
 - **Don't** add a pill radius anywhere; the world stops at `6px` except for dots.

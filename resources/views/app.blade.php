@@ -1,28 +1,13 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" @class(['dark' => ($appearance ?? 'light') == 'dark'])>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        {{-- Luma is light-mode only in v1: the .dark class is never applied from a system preference --}}
-        <script>
-            (function() {
-                const appearance = '{{ $appearance ?? "light" }}';
-
-                if (appearance === 'dark') {
-                    document.documentElement.classList.add('dark');
-                }
-            })();
-        </script>
-
-        {{-- Inline style to set the HTML background color based on our theme in app.css --}}
+        {{-- Luma is light-mode only in v1 (PRODUCT.md): no .dark class is ever applied --}}
         <style>
             html {
                 background-color: #f7f5ee;
-            }
-
-            html.dark {
-                background-color: #211d18;
             }
         </style>
 

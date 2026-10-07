@@ -207,7 +207,7 @@ export default function KnowledgeShow() {
             <div className="mx-auto flex w-full max-w-3xl flex-col gap-7 px-4 py-8 md:px-6">
                 <Link
                     href={knowledgeIndex()}
-                    className="stamp inline-flex w-fit items-center gap-1.5 rounded-[2px] text-[11px] tracking-[0.14em] text-ink-soft transition-colors hover:text-ink"
+                    className="stamp inline-flex min-h-6 w-fit items-center gap-1.5 rounded-[2px] px-1 py-1 text-[11px] tracking-[0.14em] text-ink-soft transition-colors hover:text-ink"
                 >
                     <ArrowLeft className="size-3.5" aria-hidden="true" />
                     Back to Knowledge

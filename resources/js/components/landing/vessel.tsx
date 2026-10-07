@@ -318,10 +318,16 @@ export function Vessel({
                                 : 'rotateY(0deg)',
                         }}
                     >
-                        <div className="absolute inset-0 flex items-center justify-center [backface-visibility:hidden]">
+                        <div
+                            className="absolute inset-0 flex items-center justify-center [backface-visibility:hidden]"
+                            aria-hidden={flipped}
+                        >
                             <BandFront item={item} stage={stage} />
                         </div>
-                        <div className="absolute inset-0 [transform:rotateY(180deg)] [backface-visibility:hidden]">
+                        <div
+                            className="absolute inset-0 [transform:rotateY(180deg)] [backface-visibility:hidden]"
+                            aria-hidden={!flipped}
+                        >
                             <AnatomyCard item={item} />
                         </div>
                     </div>

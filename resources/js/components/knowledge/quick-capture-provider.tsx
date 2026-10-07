@@ -7,6 +7,10 @@ const QuickCaptureContext = createContext<() => void>(() => {});
  * Exposes one Quick Capture trigger to every app page (PRD §11: the button
  * lives in the header and stays reachable from Knowledge, Dashboard and the
  * rest of the shell).
+ *
+ * The heavy part of this modal — the Tiptap field stack — is split out inside
+ * QuickCapture, so the shell stays light and the editor only arrives when the
+ * dialog is actually opened.
  */
 export function QuickCaptureProvider({ children }: { children: ReactNode }) {
     const [open, setOpen] = useState(false);

@@ -15,6 +15,7 @@ import {
     StatusMark,
 } from '@/components/landing/icons';
 import { Vessel, type VesselItem } from '@/components/landing/vessel';
+import SkipLink from '@/components/skip-link';
 
 const INK = {
     dill: '#5C7F4A',
@@ -212,7 +213,7 @@ function PrimaryAction({
     return (
         <Link
             href={href}
-            className={`stamp inline-flex items-center gap-2 rounded-[3px] bg-dill px-6 py-3 text-[13px] tracking-[0.14em] text-[#fbfaf5] transition-colors duration-200 hover:bg-dill-deep ${className}`}
+            className={`stamp inline-flex items-center gap-2 rounded-[3px] bg-dill px-6 py-3 text-[13px] tracking-[0.14em] text-white transition-colors duration-200 hover:bg-dill-deep ${className}`}
         >
             {children}
             <IconArrow className="h-4 w-4" />
@@ -280,6 +281,8 @@ export default function Welcome() {
         <>
             <Head title="Luma — Learn. Capture. Grow." />
 
+            <SkipLink />
+
             <header className="sticky top-0 z-40 border-b border-rule bg-mist">
                 <div className="mx-auto flex h-16 max-w-[1240px] items-center justify-between px-5 sm:h-[72px] sm:px-8">
                     <a
@@ -295,7 +298,7 @@ export default function Welcome() {
                         {auth.user ? (
                             <Link
                                 href={dashboard()}
-                                className="stamp rounded-[3px] bg-dill px-4 py-2.5 text-[12px] tracking-[0.14em] text-[#fbfaf5] transition-colors hover:bg-dill-deep sm:px-5 sm:text-[13px]"
+                                className="stamp rounded-[3px] bg-dill px-4 py-2.5 text-[12px] tracking-[0.14em] text-white transition-colors hover:bg-dill-deep sm:px-5 sm:text-[13px]"
                             >
                                 Dashboard
                             </Link>
@@ -309,7 +312,7 @@ export default function Welcome() {
                                 </Link>
                                 <Link
                                     href={register()}
-                                    className="stamp rounded-[3px] bg-dill px-4 py-2.5 text-[12px] tracking-[0.14em] text-[#fbfaf5] transition-colors hover:bg-dill-deep sm:px-5 sm:text-[13px]"
+                                    className="stamp rounded-[3px] bg-dill px-4 py-2.5 text-[12px] tracking-[0.14em] text-white transition-colors hover:bg-dill-deep sm:px-5 sm:text-[13px]"
                                 >
                                     Get Started
                                 </Link>
@@ -319,7 +322,7 @@ export default function Welcome() {
                 </div>
             </header>
 
-            <main>
+            <main id="main-content">
                 {/* ---------------------------------------------------------- HERO */}
                 <section className="paper-grain border-b border-rule">
                     <div className="mx-auto grid max-w-[1240px] items-center gap-12 px-5 pt-14 pb-16 sm:px-8 lg:grid-cols-12 lg:gap-10 lg:pt-20 lg:pb-24">
@@ -765,13 +768,13 @@ export default function Welcome() {
                     >
                         <Link
                             href={login()}
-                            className="text-[14px] text-ink-soft underline decoration-kraft-deep decoration-1 underline-offset-4 transition-colors hover:text-ink"
+                            className="inline-flex min-h-6 items-center text-[14px] text-ink-soft underline decoration-kraft-deep decoration-1 underline-offset-4 transition-colors hover:text-ink"
                         >
                             Login
                         </Link>
                         <Link
                             href={register()}
-                            className="text-[14px] text-ink-soft underline decoration-kraft-deep decoration-1 underline-offset-4 transition-colors hover:text-ink"
+                            className="inline-flex min-h-6 items-center text-[14px] text-ink-soft underline decoration-kraft-deep decoration-1 underline-offset-4 transition-colors hover:text-ink"
                         >
                             Register
                         </Link>

@@ -5,8 +5,6 @@
 @source '../views';
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 
-@custom-variant dark (&:is(.dark *));
-
 /* ---------------------------------------------------------------------------
    LUMA WORLD — "The Brine Calendar": label craft, shelf rails, staged vessels.
    Display: Kaushan Script · Stamped caps: Oswald · Body: Bitter (self-hosted)
@@ -153,7 +151,8 @@
     --popover: #fcfaf3;
     --popover-foreground: #2e2a26;
     --primary: #5c7f4a;
-    --primary-foreground: #fbfaf5;
+    /* white, not #fbfaf5: the off-white lands at 4.38:1 on dill (AA fail) */
+    --primary-foreground: #ffffff;
     --secondary: #dde6e1;
     --secondary-foreground: #2e2a26;
     --muted: #edeae0;
@@ -174,35 +173,6 @@
     --sidebar-accent-foreground: #2e2a26;
     --sidebar-border: #dcd7c9;
     --sidebar-ring: #3f5a33;
-}
-
-.dark {
-    --background: #211d18;
-    --foreground: #f2ede2;
-    --card: #2a251f;
-    --card-foreground: #f2ede2;
-    --popover: #2a251f;
-    --popover-foreground: #f2ede2;
-    --primary: #86ab6d;
-    --primary-foreground: #14120e;
-    --secondary: #37402f;
-    --secondary-foreground: #e9e4d8;
-    --muted: #35302a;
-    --muted-foreground: #b9b1a2;
-    --accent: #c9a97c;
-    --accent-foreground: #14120e;
-    --destructive: #d76a7f;
-    --border: #3d372f;
-    --input: #4a4339;
-    --ring: #86ab6d;
-    --sidebar: #1b1814;
-    --sidebar-foreground: #f2ede2;
-    --sidebar-primary: #86ab6d;
-    --sidebar-primary-foreground: #14120e;
-    --sidebar-accent: #302b24;
-    --sidebar-accent-foreground: #e9e4d8;
-    --sidebar-border: #3d372f;
-    --sidebar-ring: #86ab6d;
 }
 
 @layer base {
@@ -242,21 +212,21 @@
     }
 
     ::-webkit-scrollbar-track {
-        background: #f0ede3;
+        background: var(--color-mist);
     }
 
     ::-webkit-scrollbar-thumb {
-        background: #cdae86;
-        border: 3px solid #f0ede3;
+        background: var(--color-kraft);
+        border: 3px solid var(--color-mist);
         border-radius: 999px;
     }
 
     ::-webkit-scrollbar-thumb:hover {
-        background: #b08f63;
+        background: var(--color-kraft-deep);
     }
 
     ::placeholder {
-        color: #6f6a5f;
+        color: var(--color-ink-soft);
         opacity: 1;
     }
 
