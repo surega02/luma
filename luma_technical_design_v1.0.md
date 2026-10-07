@@ -37,7 +37,7 @@ Dokumen ini **tidak** mendefinisikan visual UI secara detail karena tahap UI/UX 
 | Layer         | Technology                                  |
 | ------------- | ------------------------------------------- |
 | Backend       | Laravel 13                                  |
-| Runtime       | PHP 8.3+                                    |
+| Runtime       | PHP 8.4+                                    |
 | Frontend      | React 19                                    |
 | SPA bridge    | Inertia 3                                   |
 | Language      | TypeScript / TSX                            |
@@ -50,7 +50,7 @@ Dokumen ini **tidak** mendefinisikan visual UI secara detail karena tahap UI/UX 
 | Tests         | Pest 4 + PHPUnit                            |
 | Browser tests | Pest browser testing                        |
 
-Laravel 13 requires PHP 8.3+, and the current official Laravel React starter kit uses React 19, TypeScript, Inertia 3, and Tailwind 4. The official starter kits supersede the older Breeze package approach for new applications.
+Laravel 13 requires PHP 8.3+ (this project baseline is PHP 8.4+), and the current official Laravel React starter kit uses React 19, TypeScript, Inertia 3, and Tailwind 4. The official starter kits supersede the older Breeze package approach for new applications.
 
 ---
 
@@ -1921,7 +1921,7 @@ For a containerized team environment, Laravel Sail can be introduced without cha
 Production requirements:
 
 ```text
-PHP >= 8.3
+PHP >= 8.4
 MySQL
 Nginx or FrankenPHP
 Node build environment for CI

@@ -83,7 +83,7 @@ E12 Testing / Hardening
 Tasks:
 
 - [x] Create Laravel 13 application.
-- [x] Configure PHP 8.3+.
+- [x] Configure PHP 8.4+.
 - [x] Configure local `.env`.
 - [x] Configure application name as `Luma`.
 - [x] Configure application URL.

@@ -28,7 +28,7 @@ fully specified but **not yet implemented**. See
 
 ## Tech stack
 
-- **Backend:** Laravel 13 (PHP >= 8.3), Laravel Fortify, Laravel Wayfinder
+- **Backend:** Laravel 13 (PHP >= 8.4), Laravel Fortify, Laravel Wayfinder
 - **Frontend:** Inertia.js 3 + React 19 + TypeScript, Vite 8
 - **UI:** Tailwind CSS 4, Radix UI primitives, shadcn-style components
 - **Database:** MySQL 8 locally and in production (SQLite only if `DB_CONNECTION` is overridden)
@@ -37,7 +37,7 @@ fully specified but **not yet implemented**. See
 
 ## Requirements
 
-- PHP >= 8.3
+- PHP >= 8.4
 - Composer 2
 - Node.js >= 22 and npm
 
