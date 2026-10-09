@@ -39,6 +39,7 @@ export default function KnowledgeFields({
                 <input
                     id="knowledge-title"
                     type="text"
+                    maxLength={255}
                     value={data.title}
                     placeholder="How to bake sourdough"
                     onChange={(event) => patch({ title: event.target.value })}
@@ -86,6 +87,7 @@ export default function KnowledgeFields({
                         <input
                             id="knowledge-source"
                             type="text"
+                            maxLength={255}
                             value={data.source}
                             placeholder="Ada Lovelace, 1843"
                             onChange={(event) =>
@@ -119,6 +121,7 @@ export default function KnowledgeFields({
                         <input
                             id="knowledge-url"
                             type="text"
+                            maxLength={2048}
                             value={data.url}
                             placeholder="https://example.com"
                             onChange={(event) =>

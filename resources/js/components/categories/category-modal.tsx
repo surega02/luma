@@ -113,6 +113,7 @@ export default function CategoryModal({
                         <input
                             id="category-name"
                             name="name"
+                            maxLength={255}
                             value={data.name}
                             autoComplete="off"
                             aria-invalid={errors.name ? true : undefined}

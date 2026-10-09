@@ -35,6 +35,7 @@ export default function Register({ passwordRules }: Props) {
                                     autoFocus
                                     autoComplete="name"
                                     name="name"
+                                    maxLength={255}
                                     placeholder="Full name"
                                     aria-invalid={
                                         errors.name ? true : undefined
@@ -58,6 +59,7 @@ export default function Register({ passwordRules }: Props) {
                                     required
                                     autoComplete="username"
                                     name="username"
+                                    maxLength={255}
                                     placeholder="username"
                                     aria-invalid={
                                         errors.username ? true : undefined
@@ -82,6 +84,7 @@ export default function Register({ passwordRules }: Props) {
                                     required
                                     autoComplete="email"
                                     name="email"
+                                    maxLength={255}
                                     placeholder="email@example.com"
                                     aria-invalid={
                                         errors.email ? true : undefined

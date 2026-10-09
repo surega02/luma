@@ -16,4 +16,12 @@ export function useFlashToast(): void {
             toast[data.type](data.message);
         });
     }, []);
+
+    useEffect(() => {
+        return router.on('networkError', () => {
+            toast.error(
+                "Couldn't reach Luma. Check your connection, then try again.",
+            );
+        });
+    }, []);
 }
